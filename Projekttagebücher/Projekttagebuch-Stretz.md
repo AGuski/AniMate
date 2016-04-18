@@ -3,10 +3,10 @@
 
 | Kontakt           |  |
 | ----------------- | ------ |
-| Projekt:          | XXX |
-| Projektmitglied:  | XXX |
-| Email:            | XXX |
-| Bild:             | ![Foto](img/haschi.png) |
+| Projekt:          | AniMate |
+| Projektmitglied:  | Ammon Stretz |
+| Email:            | s57076@beuth-hochschule.de |
+| Bild:             | ![Foto](img/Ammon.JPG) |
 
 
 
