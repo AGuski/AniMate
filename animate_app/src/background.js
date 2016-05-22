@@ -51,14 +51,13 @@ chrome.runtime.onConnect.addListener(function(connection) {
 
     var tabs = Object.keys(connections);
     for (var i=0, len=tabs.length; i < len; i++) {
-      if (connections[tabs[i]] == connection) {
+      if (connections[tabs[i]] === connection) {
         delete connections[tabs[i]]
         break;
       }
     }
   });
   
-
 });
 
 

@@ -1,21 +1,34 @@
 /* Establishes the connection to the background.js */
 "use strict";
 
-var bgPageConnection = chrome.runtime.connect({
-    name: "panel"
-});
+console.log('init panel');
+
+import { runBlock } from './modules/index.run';
+import { stateConfig} from './modules/panel/index.states';
+
+/* Controllers */
+import { MainController } from './main.controller';
+
+/* Directives */
+import { DisplayElementDirective } from './modules/panel/components/display-element/display-element.component';
 
 
-bgPageConnection.postMessage({
-    content: "Message from Panel!"
-});
+angular.module('aniMateApp', 
+  [
+    'ui.router', 
+    'templates'
+  ])
 
-/* Called when message from the Background Page is received */
-bgPageConnection.onMessage.addListener(function(message) {
+  .run(runBlock)
+  .config(stateConfig)
 
-	window.document.body.appendChild(document.createTextNode(message.content));
+  /* Controllers */
+  .controller('mainCtrl', MainController)
 
-	/* Example: return the message to background.js */
-	//bgPageConnection.postMessage({content: message});
+  /* Directives */
+  .directive('displayElement', DisplayElementDirective);
 
-});
+
+// Import normal javascript. Example: Connection to background page
+import { bgPageConnection } from './modules/panel/connection.script';
+

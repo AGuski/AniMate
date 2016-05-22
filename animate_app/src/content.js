@@ -1,4 +1,8 @@
-// content.js
+/*
+ * content.js
+ * 
+ * Gets run when website reloads
+ */ 
 "use strict";
 
 console.log("Content Script loading...");
@@ -6,7 +10,7 @@ console.log("Content Script loading...");
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
     if( request.message === "clicked_browser_action" ) {
-    	console.log("Blah");
+		console.log("Blah!!!!");
 	}
   }
 );

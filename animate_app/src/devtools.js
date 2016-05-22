@@ -4,7 +4,7 @@
 /* Creates the AniMate Panel in the devtools UI */
 chrome.devtools.panels.create("AniMate",
     "MyPanelIcon.png",
-    "src/Panel.html",
+    "Panel.html",
     function(panel) {
 
     }
@@ -28,7 +28,7 @@ bgPageConnection.onMessage.addListener(function(message) {
 	/* Example: return the message to background.js */
 	//bgPageConnection.postMessage({content: message});
 
- 	chrome.devtools.inspectedWindow.eval("doSelectedElement($0)",
+	chrome.devtools.inspectedWindow.eval("doSelectedElement($0)",
 	{ useContentScriptContext: true });
 
 });

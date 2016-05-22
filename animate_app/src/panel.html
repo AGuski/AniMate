@@ -1,7 +1,27 @@
 <!DOCTYPE html>
-<html>
-	<head></head>
+<html ng-app="aniMateApp" ng-csp>
+	<head>
+		<link rel="stylesheet" href="styles/panel-styles.css">
+	</head>
 	<body>
+		
+		<!-- controller & directive demonstration -->
+		<div ng-controller="mainCtrl"></div>
+		<display-element element="OldElement"></display-element>
+
+		<hr>
+		<!-- States demonstration -->
+		<a ui-sref="state1"><button>State 1</button></a>
+    	<a ui-sref="state2"><button>State 2</button></a>
+
+    	<div ui-view></div>
+
+    	<hr>
+
+		<script src="../bower_components/angular/angular.js"></script>
+		<script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+		<script src="templateCacheHtml.js"></script>
 		<script src="panel.js"></script>
+				
 	</body>
 </html>
