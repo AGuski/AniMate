@@ -1,6 +1,7 @@
 'use strict';
 
 var gulp       = require('gulp'),
+    notify     = require("gulp-notify"),
     gutil      = require('gulp-util'),
     sourcemaps = require('gulp-sourcemaps'),
     uglify     = require('gulp-uglify'),
@@ -115,22 +116,36 @@ gulp.task('vendor', function(){
   .pipe(gulp.dest(build+'/vendor'));
 });
 
-gulp.task('dev', ['manifest', 'scripts', 'html', 'styles', 'static', 'vendor'], function () {
+var liveReload = function(lr,evt){
+  lr.changed({ body: { files: [evt.path] } });
+}
+
+gulp.task('dev', ['build'], function () {
   var lr = tinylr();
   lr.listen(35729);
-  gulp.watch([src+'/**/*.{js,css,scss,html,json}'], ['manifest', 'scripts', 'html', 'styles', 'static', 'vendor'], function (evt) {
-      lr.changed({
-          body: {
-              files: [evt.path]
-          }
-      });
+  gulp.watch([src+'/**/*.{css,scss}'], ['styles'], function (evt) {
+      liveReload(lr, evt);
   });
-});
+  gulp.watch([src+'/**/*.html'], ['html'], function (evt) {
+      liveReload(lr, evt);
+  });
+  gulp.watch([src+'/**/*.js'], ['scripts'], function (evt) {
+      liveReload(lr, evt);
+  });
+  gulp.watch([src+'/app.{js,html}', src+'/manifest.json', src+'assets/**'], ['vendor', 'manifest', 'static'], function (evt) {
+      liveReload(lr, evt);
+  });
+}); 
 
 //clean build directory
 gulp.task('clean', function() {
     return gulp.src(build+'/*', {read: false})
         .pipe(clean());
+});
+
+gulp.task('build', ['manifest', 'scripts', 'html', 'styles', 'static', 'vendor'], function () {
+  return gulp.src('')
+  .pipe(notify("Build sucessful. Don\'t forget to reload the app!"));
 });
 
 // //minify styles
@@ -160,8 +175,4 @@ gulp.task('clean', function() {
 // //run all tasks after build directory has been cleaned
 // gulp.task('default', ['clean'], function() {
 //     gulp.start('zip');
-// });
-// 
-// gulp.task('default', ['lint'], function () {
-//     // This will only run if the lint task is successful...
 // });
