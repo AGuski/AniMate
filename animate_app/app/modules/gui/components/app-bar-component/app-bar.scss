@@ -1,0 +1,36 @@
+app-bar {
+
+	display: flex;
+	align-items: center;
+	
+	width: 100%;
+	height: $app-bar-height;
+
+	background-color: $app-bar-color;
+
+	padding: 5px;
+
+	.brand-text{
+		margin-left: 10px;
+	}
+
+	.app-bar-items {
+		width: 30%;
+    	display: flex;
+		justify-content: space-around;
+		align-items: center;
+    	text-decoration: none;
+    	list-style-type: none;
+
+    	li {
+    		font-size: 35px;
+    		display: inline;
+    		margin: 5px;
+
+    		&:hover {
+    			-webkit-transition: color .4s ease;
+    			color: green;
+    		}
+    	}
+	}
+}
