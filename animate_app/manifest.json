@@ -1,27 +1,15 @@
 {
   "manifest_version": 2,
-
   "name": "AniMAte DevTools Extension",
   "description": "This extension is pretty awesome.",
   "version": "0.0.1",
-  "minimum_chrome_version": "10.0",
-  "devtools_page": "src/devtools.html",
-
-  "background": {
-    "page": "src/background.html"
-  },
-  "content_scripts": [
-    {
-      "matches": [
-        "<all_urls>"
-      ],
-      "js": ["src/content.js"]
+  "app": {
+    "background": {
+      "scripts": ["background.js"]
     }
-  ],
-  "browser_action": {
-    "default_icon": "src/assets/icon.png"
   },
+  "icons": { "16": "assets/icon.png", "128": "assets/icon.png" },
   "permissions": [
-    "activeTab"
+    "webview"
   ]
 }

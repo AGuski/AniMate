@@ -51,9 +51,9 @@ gulp.task('scripts', ['lint'], function() {
 
   // Main files must be present for extension
   var files = ['background.js',
-                 'content.js',
-                 'devtools.js',
-                 'panel.js'
+                  'webview.js',
+                 // 'devtools.js',
+                 // 'panel.js'
                  ];
 
   var tasks = files.map(function(entry){
@@ -73,7 +73,7 @@ gulp.task('scripts', ['lint'], function() {
     .pipe(sourcemaps.init({loadMaps: true}))
       // Add transformation tasks to the pipeline here.
       .pipe(ngAnnotate())
-      .pipe(uglify())
+      // .pipe(uglify())
       .on('error', gutil.log)
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(build));
