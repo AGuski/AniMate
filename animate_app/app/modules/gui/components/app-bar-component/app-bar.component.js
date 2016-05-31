@@ -1,5 +1,6 @@
 let AppBarController = class {
 	constructor() {
+		'ngInject';
 		this.title="AniMate";
 	}
 }

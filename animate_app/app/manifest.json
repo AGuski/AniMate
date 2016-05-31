@@ -10,5 +10,8 @@
       "scripts": ["background.js"]
     }
   },
+  "permissions": [
+    "webview"
+  ],
   "icons": { "16": "assets/icon.png" }
 }
