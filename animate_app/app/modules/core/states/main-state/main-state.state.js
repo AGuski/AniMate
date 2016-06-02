@@ -1,18 +1,18 @@
 let mainStateController = class {
-	constructor(inputValue){
+	constructor($scope){
 		'ngInject';
-		this.value = "bar";
-		this.inputValue = inputValue;
+    this.$scope = $scope;
+    this.injectUrl = "http://www.apple.com/";
 	}
+
+  injectAScript(){
+    this.$scope.$broadcast('injectScript');
+  }
 }
 
 export default {
   templateUrl: 'modules/core/states/main-state/main-state.html',
   controller: mainStateController,
-  controllerAs: 'main',
-  resolve: {
-    inputValue: function(){
-      return "wurst";
-    }
-  }
+  controllerAs: 'ctrl',
+  resolve: {}
 }
