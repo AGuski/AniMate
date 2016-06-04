@@ -1,0 +1,42 @@
+formular-container {
+	display: block;
+	table {
+		padding-left: 10px;
+
+		.previous, .next{
+			cursor: pointer;
+			&:hover{
+				color: $normal-green;
+			}
+		}
+    	.keyframe-indicator{
+    		cursor: pointer;
+    		display: inline-block;
+    		width: 8px;
+    		height: 8px;
+    		background-color: $light-green;
+    		transform: rotate(45deg);
+    		border: 1px solid $darkest-grey;
+    		&:hover{
+    			background-color: $normal-green;
+    		}
+    	}
+		tr{
+			td:nth-child(2){
+				width: 80px;
+			}
+		}
+		input {
+			background-color: $lightest-grey;
+			width: 60px;
+			border: 1px solid $light-grey;
+		}
+		select {
+			background-color: $lightest-grey;
+			option {
+				background-color: $lightest-grey;
+				border-bottom: 1px solid $light-grey;
+			}
+		}
+	}
+}

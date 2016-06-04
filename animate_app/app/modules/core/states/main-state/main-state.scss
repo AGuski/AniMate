@@ -1,29 +1,44 @@
 #main-state{
-	background-color: white;
-
+	background-color: $white;
 	width: 100vw;
 	height: 100vh;
+	display: block;
 
-	display: inline-block;
+	.horizontal-content{
+		float: left;
+		position: relative;
+		width: 100%;
+		height: calc(100vh - 236px);
 
-	h1 {
-		color: #3333FF;
-	}
+		#webView{
+			display: block;
+			float: left;
+			width: calc(100% - 350px);
+			height: calc(100vh - 258px);
 
-	#about-btn {
-		position: absolute;
-    	bottom: 10px;
-	}
-
-	#inject-form {
-		position: absolute;
-		top: 80px;
-		right: 0;
-
-		* {
-			position: relative;
-    		display: block;
-    		margin-bottom: 10px;
+		}
+		#property-list{
+			overflow: auto;
+			float: left;
+			width: 350px;
+			height: calc(100vh - 236px);
 		}
 	}
+	#timeline-panel{
+		float: left;
+		width: 100%;
+		height: 191px;
+	}
 }
+		
+		// #inject-form {
+		// 	position: absolute;
+		// 	top: 80px;
+		// 	right: 0;
+
+		// 	* {
+		// 		position: relative;
+		// 		display: block;
+		// 		margin-bottom: 10px;
+		// 	}
+		// }

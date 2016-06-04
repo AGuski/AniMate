@@ -1,0 +1,25 @@
+{ "categories": [
+	{ "name": "Greenock - Properties"},
+	{ "name": "CSS - Properties", "subcategories": [
+		{ "name": "Positioning", "content": [
+			{ "name": "position", "type": "selection", "options": [
+				"absolute", "relative", "fixed", "static"
+			]},
+			{ "name": "top", "type": "number", "values":[
+				"px", "em"
+			]},
+			{ "name": "bottom", "type": "number", "values":[
+				"px", "em"
+			]},
+			{ "name": "left", "type": "number", "values":[
+				"px", "em"
+			]},
+			{ "name": "right", "type": "number", "values":[
+				"px", "em"
+			]}
+		]},
+		{ "name": "Borders"},
+		{ "name": "Textstyling"},
+		{ "name": "Next Categorie"}
+	]}
+]}
