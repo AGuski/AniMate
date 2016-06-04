@@ -1,0 +1,56 @@
+collapse-container{
+	display: block;
+	width: 100%;
+	background-color: $white;
+
+	.header {
+		background-color: $lightest-grey;
+		border-bottom: 1px solid $light-grey;
+		padding: 10px;
+		.collapse-handler{
+			display: inline-block;
+    		cursor: pointer;
+    		:hover{
+    			color: $dark-grey;
+    		}
+		}
+		.headline{
+			display: inline-block;
+    		cursor: pointer;
+    		:hover{
+    			color: $dark-grey;
+    		}
+		}
+		.collapse-handler,
+    	.headline{
+    		display: inline-block;
+    		cursor: pointer;
+    		:hover{
+    			color: $dark-grey;
+    		}
+    	}
+    }
+    .content {
+    	border-left: 1px solid $normal-grey;
+	   	height: auto;
+	   	overflow: hidden;
+	   	padding: 5px 0 5px 5px;
+	   	box-sizing: border-box;
+	   	&.hidden{
+			height: 0;
+			padding: 0 0 0 5px;
+	   	}
+	   	&.hide{
+			height: 0;
+			padding: 0 0 0 5px;
+	   	}
+	   	&.show{
+	   		height: auto;
+	   		padding: 5px 0 5px 5px;
+	   	}
+  	}
+  	&.collapsed > .content {
+    	// height: 0px;
+    	// padding: 0px;
+  	}
+}

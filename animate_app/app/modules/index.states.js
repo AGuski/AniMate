@@ -8,14 +8,5 @@ export function stateConfig ($stateProvider) {
   $stateProvider
 
     // Example: imported State
-    .state('main', mainState)
-
-    // Example: inline State
-    .state('about', {
-      template: '<h1>{{aboutState.title}}</h1><a ui-sref="main"><button>Back</button></a>',
-      controller: function(){
-        this.title = 'About this App';
-      },
-      controllerAs: 'aboutState'
-    });
+    .state('main', mainState);
 }

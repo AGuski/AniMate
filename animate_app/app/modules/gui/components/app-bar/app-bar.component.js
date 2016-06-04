@@ -6,7 +6,7 @@ let AppBarController = class {
 }
 
 export default {
-	templateUrl: 'modules/gui/components/app-bar-component/app-bar.html',
+	templateUrl: 'modules/gui/components/app-bar/app-bar.html',
 	controller: AppBarController,
 	controllerAs: 'ctrl',
 	bindings:{}
