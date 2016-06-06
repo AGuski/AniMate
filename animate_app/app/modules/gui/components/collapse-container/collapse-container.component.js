@@ -14,7 +14,6 @@ let CollapseContainerController = class {
 
 		// TODO: implement with ngAnimate
 
-		console.log(this.visibility);
 		if(this.visibility==="hidden"){
 			this.visibility="show";
 		}else if(this.visibility==="hide"){

@@ -1,4 +1,4 @@
-let formularContainerController = class {
+let propertiesContainerController = class {
 	constructor() {
 	'ngInject';
 	}
@@ -19,8 +19,8 @@ let formularContainerController = class {
 }
 
 export default {
-	templateUrl: 'modules/gui/components/formular-container/formular-container.html',
-	controller: formularContainerController,
+	templateUrl: 'modules/gui/components/properties-container/properties-container.html',
+	controller: propertiesContainerController,
 	controllerAs: 'ctrl',
 	bindings: {
 		content: '<'
