@@ -1,22 +1,24 @@
 <div id="main-state">
-	<app-bar></app-bar>
-	
+<app-bar></app-bar>
+	<div class="horizontal-content">
+		<an-webview id="webView"
+			source="{{ctrl.injectUrl}}"
+			autosize="on"
+			script="{{ctrl.injectScript}}">
+		</an-webview>
+		<property-list id="property-list"></property-list>
+	</div>
 	<!-- Prototype of an-webview component -->
-	<an-webview
-		source="{{ctrl.injectUrl}}"
-		autosize="on"
-		script="{{ctrl.injectScript}}">
-	</an-webview>
+	
 
 	<!-- Demo form to Inject a script into an-webview -->
-	<form id="inject-form" name="ctrl.injectForm">
+	<!-- <form id="inject-form" name="ctrl.injectForm">
 		<input type="text" form="inject-form"
 			ng-model="ctrl.injectUrl"
 			ng-init="ctrl.injectUrl='http://www.apple.com/'">
 		<textarea form="inject-form" cols="30" rows="20" ng-model="ctrl.injectScript"></textarea>
 		<button id="injectButton" ng-click="ctrl.injectAScript()">Inject script!!</button>
-	</form>
+	</form> -->
 	
-    <a id="about-btn" ui-sref="about"><button>About</button></a>
-
+	<timeline-panel id="timeline-panel"></timeline-panel>
 </div>

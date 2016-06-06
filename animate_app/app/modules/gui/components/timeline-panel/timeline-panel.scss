@@ -1,0 +1,52 @@
+timeline-panel {
+	>.header{
+		background-color: $lightest-grey;
+		border-bottom: 1px solid $dark-grey;
+		
+		.time{
+			width: 200px;
+			text-align: center;
+			padding: 10px;
+			background-color: $light-grey;
+			border-right: 1px solid $dark-grey;
+		}
+	}
+	>.content{
+		overflow: auto;
+		height: 153px;
+		>.elementList{
+			position: relative;
+    		float: left;
+			ul{
+				display: inline-block;
+				width: 220px;
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				border-right: 1px solid $dark-grey;
+				li{
+					display: block;
+					text-align: center;
+					border-bottom: 1px solid $normal-grey;
+					padding: 10px;
+					background-color: $lightest-grey;
+				}
+			}
+		}
+		>.timeline{
+			position: relative;
+    		float: left;
+    		width: calc(100% - 221px);
+			ul{
+				
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				display: block;
+				li{
+					
+				}
+			}
+		}
+	}
+}
