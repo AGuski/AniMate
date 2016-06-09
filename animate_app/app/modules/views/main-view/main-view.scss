@@ -23,20 +23,60 @@
     height: 100%;
     display: flex;
 
-  	#top-left {
+  	#top-left, #top-right {
       overflow: scroll;
     }
-
-  	#top-right {
-      overflow: scroll;
-    }
-
   }
 
   #bottom {
-    z-index: 10;
     width: 100%;
     height: 100%;
+    z-index: 10;
   }
-
 }
+
+/* view animations PROTOTYPE */
+#top-right.ng-enter, #top-right.ng-leave {
+  position: absolute;
+  right: 0;
+  -webkit-transition:all .3s ease-in-out;
+}
+
+#top-right.ng-enter {
+  transform: translate(300px, 0);
+}
+
+#top-right.ng-enter-active {
+  transform: translate(0, 0);
+}
+
+#top-right.ng-leave {
+  transform: translate(0, 0);
+}
+
+#top-right.ng-leave-active {
+  transform: translate(300px, 0);
+}
+
+#top-left.ng-enter, #top-left.ng-leave {
+  position: absolute;
+  left: 0;
+  -webkit-transition:all .3s ease-in-out;
+}
+
+#top-left.ng-enter {
+  transform: translate(-900px, 0);
+}
+
+#top-left.ng-enter-active {
+  transform: translate(0, 0);
+}
+
+#top-left.ng-leave {
+  transform: translate(0, 0);
+}
+
+#top-left.ng-leave-active {
+  transform: translate(-900px, 0);
+}
+  

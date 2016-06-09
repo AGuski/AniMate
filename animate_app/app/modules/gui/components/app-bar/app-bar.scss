@@ -43,5 +43,11 @@ app-bar {
         color: $darkest-grey;
       }
     }
+
+    &.right {
+      position: absolute;
+      right: 0;
+    }
+
   }
 }

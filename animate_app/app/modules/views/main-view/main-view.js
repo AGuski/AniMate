@@ -7,6 +7,5 @@ let mainViewController = class {
 export default {
   templateUrl: 'modules/views/main-view/main-view.html',
   controller: mainViewController,
-  controllerAs: 'ctrl',
-  resolve: {}
+  controllerAs: 'mainCtrl'
 }
