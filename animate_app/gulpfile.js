@@ -123,16 +123,16 @@ var liveReload = function(lr,evt){
 gulp.task('dev', ['build'], function () {
   var lr = tinylr();
   lr.listen(35729);
-  gulp.watch([src+'/**/*.{css,scss}'], ['styles'], function (evt) {
+  gulp.watch(['**/*.{css,scss}'], {cwd: src}, ['styles'], function (evt) {
       liveReload(lr, evt);
   });
-  gulp.watch([src+'/**/*.html'], ['html'], function (evt) {
+  gulp.watch(['**/*.html'], {cwd: src}, ['html'], function (evt) {
       liveReload(lr, evt);
   });
-  gulp.watch([src+'/**/*.js'], ['scripts'], function (evt) {
+  gulp.watch(['**/*.js'], {cwd: src}, ['scripts'], function (evt) {
       liveReload(lr, evt);
   });
-  gulp.watch([src+'/app.{js,html}', src+'/manifest.json', src+'assets/**'], ['vendor', 'manifest', 'static'], function (evt) {
+  gulp.watch(['app.{js,html}', 'manifest.json', 'assets/**'], {cwd: src}, ['vendor', 'manifest', 'static'], function (evt) {
       liveReload(lr, evt);
   });
 }); 
