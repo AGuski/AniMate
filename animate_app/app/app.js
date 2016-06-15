@@ -14,6 +14,7 @@ import { CompileDirective } from './modules/utils/directives/compile/compile.dir
 
 /* Factories */
 import { propertyFactory } from './modules/gui/factories/property.factory';
+import { projectFactory } from './modules/gui/factories/project.factory';
 
 
 angular.module('aniMateApp', [
@@ -43,6 +44,7 @@ angular.module('aniMateApp', [
 
   /* Factories */
   .factory('propertyFactory',propertyFactory)
+  .factory('projectFactory',projectFactory)
 
   .run(['$state', function ($state) {
     $state.go('main.default');
