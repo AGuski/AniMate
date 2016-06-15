@@ -1,9 +1,12 @@
 <div id="main-view">
 
   <app-bar></app-bar>
-
-  <div id="top-left" ui-view="top-left"></div>
-  <div id="top-right" ui-view="top-right"></div>
-  <div id="bottom" ui-view="bottom"></div>
+  <drag-divider id="main-content" div-direction="vertical" div-ratio="0.75">
+		<top-div drag-divider id="top" div-direction="horizontal" div-ratio="0.75">
+		  <top-div id="top-left" ui-view="top-left"></top-div>
+		  <bottom-div id="top-right" ui-view="top-right"></bottom-div>
+	  </top-div>
+	  <bottom-div id="bottom" ui-view="bottom"></bottom-div>
+  </drag-divider>
 
 </div>
