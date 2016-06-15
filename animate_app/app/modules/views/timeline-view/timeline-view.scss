@@ -1,4 +1,10 @@
 #timeline-view {
+  
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
   >.header{
     background-color: $lightest-grey;
     border-bottom: 1px solid $dark-grey;
@@ -13,7 +19,6 @@
   }
   >.content{
     overflow: auto;
-    height: 153px;
     >.elementList{
       position: relative;
         float: left;
