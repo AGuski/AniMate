@@ -5,28 +5,14 @@
   <div class="content">
     <div class="elementList">
       <ul>
-        <li class="element">Element1</li>
-        <li class="element">Element2</li>
-        <li class="element">Element3</li>
-        <li class="element">Element3</li>
-        <li class="element">Element3</li>
+        <li ng-repeat="el in ctrl.elements" class="element" ng-class="ctrl.isActiveElement(el);" ng-click="ctrl.setActiveElement(el);">
+          {{el._name}}_{{el._class}}_{{el._id}}
+        </li>
       </ul>
     </div>
     <div class="timeline">
       <ul>
-        <li class="element">
-          <timeline></timeline>
-        </li>
-        <li class="element">
-          <timeline></timeline>
-        </li>
-        <li class="element">
-          <timeline></timeline>
-        </li>
-        <li class="element">
-          <timeline></timeline>
-        </li>
-        <li class="element">
+        <li ng-repeat="el in ctrl.elements" class="element">
           <timeline></timeline>
         </li>
       </ul>
