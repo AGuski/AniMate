@@ -1,11 +1,12 @@
 #web-view {
 
   height: 100%;
+  position:relative;
 
   webview {
     display: block;
     width: 100%;
     height: 90%;
-    position:relative;
+    position:absolute;
   }
 }

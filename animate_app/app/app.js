@@ -11,6 +11,7 @@ import propertiesContainerComponent from './modules/gui/components/properties-co
 
 /* Directives */
 import { CompileDirective } from './modules/utils/directives/compile/compile.directive';
+import { DragDividerDirective } from './modules/gui/directives/drag-divider/drag-divider.directive';
 
 /* Factories */
 import { propertyFactory } from './modules/gui/factories/property.factory';
@@ -35,16 +36,17 @@ angular.module('aniMateApp', [
 
   /* Directives */
   .directive('compile', CompileDirective)
+  .directive('dragDivider', DragDividerDirective)
+
+  /* Factories */
+  .factory('propertyFactory',propertyFactory)
+  .factory('projectFactory',projectFactory)
 
   .config(function($sceProvider) {
     // Completely disable SCE.  For demonstration purposes only!
     // Do not use in new projects.
     $sceProvider.enabled(false);
   })
-
-  /* Factories */
-  .factory('propertyFactory',propertyFactory)
-  .factory('projectFactory',projectFactory)
 
   .run(['$state', function ($state) {
     $state.go('main.default');
