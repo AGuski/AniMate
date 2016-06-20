@@ -11,7 +11,21 @@
     }
   },
   "permissions": [
-    "webview"
+    "syncFileSystem",
+    "webview",
+    {"fileSystem": ["write", "retainEntries", "directory"]},
+    "storage",
+    "contextMenus"
   ],
-  "icons": { "16": "assets/icon.png" }
+  "icons": { "16": "assets/icon.png" },
+
+  "webview":{
+    "partitions": [
+      {
+        "name": "contentView",
+        "accessible_resources": ["*.html"]
+      }
+    ]
+
+  }
 }
