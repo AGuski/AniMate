@@ -1,0 +1,81 @@
+
+#file-view
+{
+  height: 300px;
+  position: relative;
+  top: 0;
+  left: 0;
+  margin-top: -10%;
+}
+
+.dropping {
+  background: #ffcc00;
+}
+#file-view nav {
+  display: -webkit-flex;
+}
+/*#file-view video {
+    width: 640px;
+    height: 480px;
+    background: rgba(0,0,0,0.25);
+}*/
+#file-view button {
+  height: 30px;
+  display: inline-block;
+  background: -webkit-linear-gradient(#F9F9F9 40%, #E3E3E3 40%);
+  background: linear-gradient(#F9F9F9 40%, #E3E3E3 50%);
+  border: 1px solid #999;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-size: 10pt;
+}
+
+#url{
+  height: 30px;
+}
+
+#file-view button:not(:disabled):hover {
+  border-color: black;
+}
+#file-view button:not(:disabled):active {
+  background: -webkit-linear-gradient(#E3E3E3 40%, #F9F9F9 70%);
+  background: linear-gradient(#E3E3E3 40%, #F9F9F9 70%);
+}
+#file-view input {
+  width: 100%;
+
+  -webkit-user-select: none;
+}
+#file-viewinput, textarea {
+  box-shadow: 1px 1px 5px #ccc inset;
+  border: none;
+  padding: 1em;
+}
+[readonly] {
+  background: #eee;
+}
+[hidden] {
+  display: none;
+}
+#file-view textarea {
+  width: 100%;
+  height: 110px;
+  outline: none;
+  padding: 1px;
+  font-size: 10pt;
+  padding: 1em;
+}
+#file-view output {
+  text-align: center;
+  padding: 1em;
+  display: block;
+  color: red;
+  font-style: oblique;
+}
