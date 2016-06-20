@@ -17,6 +17,10 @@ import { DragDividerDirective } from './modules/gui/directives/drag-divider/drag
 import { propertyFactory } from './modules/gui/factories/property.factory';
 import { projectFactory } from './modules/gui/factories/project.factory';
 
+/* Constants */
+import { projectConst } from './modules/gui/constants/project.constant';
+import { elementConst } from './modules/gui/constants/element.constant';
+import { keyframeConst } from './modules/gui/constants/keyframe.constant';
 
 angular.module('aniMateApp', [
     'ui.router',
@@ -42,11 +46,25 @@ angular.module('aniMateApp', [
   .factory('propertyFactory',propertyFactory)
   .factory('projectFactory',projectFactory)
 
+  /* Constants */
+  .constant('Project', projectConst)
+  .constant('Element', elementConst)
+  .constant('Keyframe', keyframeConst)
+
   .config(function($sceProvider) {
     // Completely disable SCE.  For demonstration purposes only!
     // Do not use in new projects.
     $sceProvider.enabled(false);
   })
+
+  /* Factories */
+  .factory('propertyFactory',propertyFactory)
+  .factory('projectFactory',projectFactory)
+
+  /* Constants */
+  .constant('Project', projectConst)
+  .constant('Element', elementConst)
+  .constant('Keyframe', keyframeConst)
 
   .run(['$state', function ($state) {
     $state.go('main.default');

@@ -9,7 +9,7 @@ let propertyViewController = class {
       }
     );
 
-    this.injectUrl = "http://www.apple.com/";
+    this.injectUrl = "https://www.microsoft.com/de-de/windows";
     this.rootScope = $rootScope;
   }
 

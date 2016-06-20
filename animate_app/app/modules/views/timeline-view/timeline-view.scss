@@ -35,6 +35,9 @@
           border-bottom: 1px solid $normal-grey;
           padding: 10px;
           background-color: $lightest-grey;
+          &.active{
+            background-color: $light-green;
+          }
         }
       }
     }
