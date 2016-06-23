@@ -107,6 +107,10 @@ gulp.task('styles', function(){
 });
 
 gulp.task('static', function(){
+  //* Inject Scripts are static for now
+  gulp.src(src+'/inject/**/*')
+  .pipe(gulp.dest(build+'/inject'));
+
   return gulp.src(src+'/assets/**/*')
   .pipe(gulp.dest(build+'/assets'));
 });
@@ -132,7 +136,7 @@ gulp.task('dev', ['build'], function () {
   gulp.watch(['**/*.js'], {cwd: src}, ['scripts'], function (evt) {
       liveReload(lr, evt);
   });
-  gulp.watch(['app.{js,html}', 'manifest.json', 'assets/**'], {cwd: src}, ['vendor', 'manifest', 'static'], function (evt) {
+  gulp.watch(['app.{js,html}', 'manifest.json', 'assets/**', 'inject/**'], {cwd: src}, ['vendor', 'manifest', 'static'], function (evt) {
       liveReload(lr, evt);
   });
 }); 
