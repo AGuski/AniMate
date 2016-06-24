@@ -1,9 +1,11 @@
 let CollapseContainerController = class {
 
-	constructor($q, propertyFactory) {
+	constructor($q, propertyFactory, projectFactory) {
 		'ngInject';
 		this.visibility="hidden";
 		this.data;
+		this.project= projectFactory.getProject();
+		this.actualElement = this.project._activeElement;
 		propertyFactory.getData().then(
 			(data) => {
 				this.data = data;

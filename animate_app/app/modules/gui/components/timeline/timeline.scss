@@ -9,7 +9,7 @@ timeline{
 	overflow: hidden;
 	box-sizing: border-box;
 	.keyframe{
-		position: relative;
+		position: absolute;
 		cursor: pointer;
 		display: inline-block;
 		width: 12px;

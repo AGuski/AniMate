@@ -6,8 +6,8 @@ export function projectFactory(Element, Project){
   return {
     addElement,
     getElements,
-    isActiveElement,
-    setActiveElement
+    getProject,
+    getProjectLength
   };
 
   function addElement(el){
@@ -17,10 +17,10 @@ export function projectFactory(Element, Project){
   function getElements(){
     return project._elements;
   }
-  function isActiveElement(el){
-      return project._activeElement.equalsByDescription(el);
+  function getProject(){
+    return project;
   }
-  function setActiveElement(el){
-      return project._activeElement=el;
+  function getProjectLength(){
+    return project._length;
   }
 }

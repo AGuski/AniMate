@@ -1,1 +1,1 @@
-<div class="keyframe"></div>
+<div ng-repeat="key in ctrl.keyframes" class="keyframe" ng-style="ctrl.getStyling(key)" ng-click="ctrl.selectKeyframe(key);" ng-mousedown="ctrl.drag(key)" ng-mouseup="ctrl.drop()" ng-mousemove="ctrl.move(key)"></div>
