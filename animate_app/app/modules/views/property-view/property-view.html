@@ -8,6 +8,12 @@
 
   <!-- Property List -->
   <div class="scroll-container">
+  	<div class="header">
+      <h4>{{ctrl.getElementTitle()}}</h4>
+      tagName: {{ctrl.getTagName()}}<br>
+      classes: {{ctrl.getClass()}}<br>
+      id: {{ctrl.getId()}}
+    </div>
     <collapse-container ng-repeat="category in ctrl.data.categories" category="category"></collapse-container>
   </div>
 

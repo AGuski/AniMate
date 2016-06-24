@@ -1,25 +1,29 @@
 { "categories": [
-	{ "name": "Greenock - Properties"},
 	{ "name": "CSS - Properties", "subcategories": [
 		{ "name": "Positioning", "content": [
-			{ "name": "position", "type": "selection", "options": [
-				"absolute", "relative", "fixed", "static"
-			]},
-			{ "name": "top", "type": "number", "values":[
-				"px", "em"
-			]},
-			{ "name": "bottom", "type": "number", "values":[
-				"px", "em"
-			]},
-			{ "name": "left", "type": "number", "values":[
-				"px", "em"
-			]},
-			{ "name": "right", "type": "number", "values":[
-				"px", "em"
-			]}
+			{ "name": "position" },
+			{ "name": "top" },
+			{ "name": "bottom" },
+			{ "name": "left" },
+			{ "name": "right" }
 		]},
-		{ "name": "Borders"},
-		{ "name": "Textstyling"},
-		{ "name": "Next Categorie"}
+		{ "name": "Sizing", "content": [
+			{ "name": "minHeight" },
+			{ "name": "height" },
+			{ "name": "maxHeight" },
+			{ "name": "minWidth" },
+			{ "name": "width" },
+			{ "name": "maxWidth" }
+		]},
+		{ "name": "Padding und Margin", "content": [
+			{ "name": "marginBottom" },
+			{ "name": "marginLeft" },
+			{ "name": "marginRight" },
+			{ "name": "marginTop" },
+			{ "name": "paddingBottom" },
+			{ "name": "paddingLeft" },
+			{ "name": "paddingRight" },
+			{ "name": "paddingTop" }
+		]}
 	]}
 ]}
