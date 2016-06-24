@@ -6,21 +6,23 @@ export function projectFactory(Element, Project){
   return {
     addElement,
     getElements,
-    isActiveElement,
-    setActiveElement
+    getProject,
+    getProjectLength,
+    getTime
   };
-
   function addElement(el){
-    let tempElement = new Element(el.name, el.class, el.id);
-    project.addElement(tempElement);
+    project.addElement(new Element(el, "Element_"+project._elements.length));
   }
   function getElements(){
     return project._elements;
   }
-  function isActiveElement(el){
-      return project._activeElement.equalsByDescription(el);
+  function getProject(){
+    return project;
   }
-  function setActiveElement(el){
-      return project._activeElement=el;
+  function getProjectLength(){
+    return project._length;
+  }
+  function getTime(){
+    return project._dot;
   }
 }

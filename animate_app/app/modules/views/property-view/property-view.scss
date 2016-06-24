@@ -1,14 +1,23 @@
 #property-view {
 
-	#inject-form {
-		position: relative;
+  #inject-form {
+    position: relative;
 
-		* {
-			position: relative;
-    	display: block;
-    	margin-left: 30px;
-    	margin-bottom: 10px;
-		}
-	}
-  
+    * {
+      position: relative;
+      display: block;
+      margin-left: 30px;
+      margin-bottom: 10px;
+    }
+  }
+  .header {
+    background-color: $lightest-grey;
+    border-bottom: 1px solid $light-grey;
+    padding: 10px;
+
+    h4{
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
 }

@@ -10,11 +10,32 @@
     border-bottom: 1px solid $dark-grey;
     
     .time{
+      float: left;
       width: 200px;
       text-align: center;
       padding: 10px;
       background-color: $light-grey;
       border-right: 1px solid $dark-grey;
+    }
+    #time-scale{
+      float: left;
+      height: 36px;
+      width: calc(100% - 221px);
+      z-index: -1;
+
+      .time-scale-part{
+        position: relative;
+        display: inline-block;
+        height: 36px;
+
+        .time-scale-point{
+          position: absolute;
+          width: 2px;
+          height: 10px;
+          bottom: 0;
+          background-color: $dark-grey;
+        }
+      }
     }
   }
   >.content{
@@ -43,8 +64,8 @@
     }
     >.timeline{
       position: relative;
-        float: left;
-        width: calc(100% - 221px);
+      float: left;
+      width: calc(100% - 221px);
       ul{
         
         margin: 0;

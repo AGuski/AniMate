@@ -1,19 +1,26 @@
 <div id="timeline-view">
   <div class="header">
-    <div class="time">00:00:01</div>
+    <div class="time" ng-click="ctrl.addKeyframe();">
+      {{ctrl.printTime();}}
+    </div>
+    <div id="time-scale" ng-click="ctrl.doClick($event);">
+      <div class="time-scale-part" ng-style="ctrl.getPartStyles();" ng-repeat="iww in ctrl.getPartNumber()">
+        <div class="time-scale-point"></div>
+      </div>
+    </div>
   </div>
   <div class="content">
     <div class="elementList">
       <ul>
         <li ng-repeat="el in ctrl.elements" class="element" ng-class="ctrl.isActiveElement(el);" ng-click="ctrl.setActiveElement(el);">
-          {{el._name}}_{{el._class}}_{{el._id}}
+          {{el.getTitel()}}
         </li>
       </ul>
     </div>
     <div class="timeline">
       <ul>
         <li ng-repeat="el in ctrl.elements" class="element">
-          <timeline></timeline>
+          <timeline element="el"></timeline>
         </li>
       </ul>
     </div>

@@ -22,9 +22,12 @@ import { modalFactory } from './Modules/gui/factories/modal.factory';
 
 /* Constants */
 import { DEFAULT_SETTINGS } from './modules/core/constants/defaultSettings.constant';
-import { projectConst } from './modules/gui/constants/project.constant';
-import { elementConst } from './modules/gui/constants/element.constant';
-import { keyframeConst } from './modules/gui/constants/keyframe.constant';
+
+/* Services */
+import { projectClassService } from './modules/core/classes/project.service';
+import { elementClassService } from './modules/core/classes/element.service';
+import { keyframeClassService } from './modules/core/classes/keyframe.service';
+import { timelineClassService } from './modules/core/classes/timeline.service';
 
 angular.module('aniMateApp', [
     'ui.router',
@@ -55,9 +58,12 @@ angular.module('aniMateApp', [
 
   /* Constants */
   .constant('DEFAULT_SETTINGS', DEFAULT_SETTINGS)
-  .constant('Project', projectConst)
-  .constant('Element', elementConst)
-  .constant('Keyframe', keyframeConst)
+
+  /* Services */
+  .service('Project', projectClassService)
+  .service('Element', elementClassService)
+  .service('Keyframe', keyframeClassService)
+  .service('Timeline', timelineClassService)
 
   .config(function($sceProvider) {
     // Completely disable SCE.  For demonstration purposes only!
