@@ -1,8 +1,10 @@
 let webViewController = class {
   constructor($scope, projectFactory, $window) {
     'ngInject';
-
+    this.compile = $compile;
+    this.element = $element;
     this.scope = $scope;
+
     this.webview = document.querySelector('webview');
     var isLoading = false;
 
