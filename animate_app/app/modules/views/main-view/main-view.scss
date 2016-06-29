@@ -79,4 +79,20 @@
 #top-left.ng-leave-active {
   transform: translate(-900px, 0);
 }
+
+/* Font Awesome button defaults */
+
+.fa.button{
+  font-size: 20px;
+  color: $dark-grey;
+  cursor: pointer;
+  
+  &:hover {
+    -webkit-transition: color .4s ease;
+    color: $darkest-grey;
+  }
+}
+
+
+
   

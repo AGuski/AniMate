@@ -8,6 +8,7 @@ import appBarComponent from './modules/gui/components/app-bar/app-bar.component'
 import timelineComponent from './modules/gui/components/timeline/timeline.component';
 import collapseContainerComponent from './modules/gui/components/collapse-container/collapse-container.component';
 import propertiesContainerComponent from './modules/gui/components/properties-container/properties-container.component';
+import modalComponent from './modules/gui/components/modal/modal.component';
 
 /* Directives */
 import { CompileDirective } from './modules/utils/directives/compile/compile.directive';
@@ -16,6 +17,7 @@ import { DragDividerDirective } from './modules/gui/directives/drag-divider/drag
 /* Factories */
 import { propertyFactory } from './modules/gui/factories/property.factory';
 import { projectFactory } from './modules/gui/factories/project.factory';
+import { modalFactory } from './Modules/gui/factories/modal.factory';
 
 /* Constants */
 import { projectConst } from './modules/gui/constants/project.constant';
@@ -37,6 +39,7 @@ angular.module('aniMateApp', [
   .component('timeline', timelineComponent)
   .component('collapseContainer', collapseContainerComponent)
   .component('propertiesContainer', propertiesContainerComponent)
+  .component('modal', modalComponent)
 
   /* Directives */
   .directive('compile', CompileDirective)
@@ -45,6 +48,7 @@ angular.module('aniMateApp', [
   /* Factories */
   .factory('propertyFactory',propertyFactory)
   .factory('projectFactory',projectFactory)
+  .factory('modalFactory', modalFactory)
 
   /* Constants */
   .constant('Project', projectConst)
@@ -56,15 +60,6 @@ angular.module('aniMateApp', [
     // Do not use in new projects.
     $sceProvider.enabled(false);
   })
-
-  /* Factories */
-  .factory('propertyFactory',propertyFactory)
-  .factory('projectFactory',projectFactory)
-
-  /* Constants */
-  .constant('Project', projectConst)
-  .constant('Element', elementConst)
-  .constant('Keyframe', keyframeConst)
 
   .run(['$state', function ($state) {
     $state.go('main.default');

@@ -1,15 +1,15 @@
 <h1 ui-sref="about" class="brand-text">{{ctrl.title}}</h1>
 <ul class="app-bar-items">
-  <li><i class="fa fa-cog"></i></li>
-  <li><i class="fa fa-file-text"></i></li>
-  <li><i class="fa fa-pencil-square"></i></li>
+  <li><i class="fa button fa-cog"></i></li>
+  <li><i class="fa button fa-file-text"></i></li>
+  <li><i class="fa button fa-pencil-square"></i></li>
 </ul>
 
 <ul class="app-bar-items right">
-  <li><i class="fa fa-share" ng-click="ctrl.rotateStates(['main.default', 'main.swapped'])"></i></li>
+  <li><i class="fa button fa-share" ng-click="ctrl.rotateStates(['main.default', 'main.swapped'])"></i></li>
   <li>
     <i
-      class="fa " ng-click="ctrl.toggleChildState('.file')"
+      class="fa button " ng-click="ctrl.toggleChildState('.file')"
       ng-class="{'fa-file-text': !ctrl.hasState('.file'), 'fa-pencil-square': ctrl.hasState('.file')}">
   </i>
 </li>
