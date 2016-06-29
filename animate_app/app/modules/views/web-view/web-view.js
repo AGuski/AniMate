@@ -1,8 +1,8 @@
 let webViewController = class {
   constructor($scope, projectFactory, $window) {
     'ngInject';
-    this.compile = $compile;
-    this.element = $element;
+/*    this.compile = $compile;
+    this.element = $element;*/
     this.scope = $scope;
 
     this.webview = document.querySelector('webview');
@@ -21,6 +21,7 @@ let webViewController = class {
         run_at: 'document_start'
       }
     ]);
+
 
     /* dynamic creation of the elements in context menu */
     chrome.runtime.onMessage.addListener((message) => {
@@ -79,9 +80,11 @@ let webViewController = class {
 
   refresh() {
     this.webview.reload();
+
   }
   backTo(){
     this.webview.back();
+
   }
 
   forward(){
@@ -91,6 +94,7 @@ let webViewController = class {
   execute(script) {
     this.webview.executeScript({ code: script});
   }
+
 
 }
 
