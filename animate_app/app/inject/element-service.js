@@ -35,7 +35,8 @@ window.addEventListener('message', (event) => {
     try {
       var elementJSON = domJSON.toJSON(an1M4t3.elementList[event.data.elIndex], {
         metadata: false,
-        computedStyle: true
+        computedStyle: true,
+        deep: 0
       });
       event.source.postMessage({type: 'element', element: elementJSON}, '*');
     } catch(e) {

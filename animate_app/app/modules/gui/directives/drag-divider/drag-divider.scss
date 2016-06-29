@@ -29,7 +29,7 @@ drag-divider {
 
   /* Divider Bar */
   .divider {
-    z-index: 2000;
+    z-index: 10;
 
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     border: $light-grey 1px solid;

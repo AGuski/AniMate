@@ -1,5 +1,5 @@
 let webViewController = class {
-  constructor($scope, projectFactory, $window){
+  constructor($scope, $window, modalFactory, projectFactory){
     'ngInject';
 
     this.scope = $scope;
@@ -40,11 +40,14 @@ let webViewController = class {
         case 'element':
           console.log(event.data.element);
           projectFactory.addElement(event.data.element);
+
           break;
         case 'error':
-          console.log(event.data.message);
-
-          // TODO: Display the error as a message in UI
+          this.errorMessage = event.data.message;
+          /* templateUrl used as example */
+          modalFactory.createModal('Sorry, element import failed!', {
+            templateUrl: 'modules/views/web-view/error-modal.html'
+          }, $scope);
 
           break;
       }

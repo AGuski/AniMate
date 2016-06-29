@@ -1,0 +1,48 @@
+modal {
+
+	&> *{
+		z-index: 20;
+		position: fixed;
+	}
+
+	#modal-backdrop {
+		background-color: rgba(228, 228, 228, 0.85);
+		width: 100vw;
+		height: 100vh;
+		top: 0;
+		left: 0;
+	}
+
+	#modal {
+		width: 500px;
+		height: 300px;
+		left: 200px;
+		top: 200px;
+		background-color: $white;
+		border: 1px solid $light-grey;
+		border-radius: 4px;
+
+		padding: 20px;
+		
+		.title{
+			position: relative;
+			margin: 0;
+			color: $dark-grey;
+		}
+
+		.content {
+			position: relative;
+			&> * {
+				margin-top: 20px;
+			}
+		}
+
+		.modal-close-btn {
+			position: absolute;
+			top: 20px;
+			right: 20px;
+		}
+
+	}
+}
+
