@@ -1,0 +1,13 @@
+#settings-view {
+
+	fieldset {
+		border: none;
+		border-bottom: 1px solid $light-grey;
+		padding: 25px 0;
+	}
+
+	#default-homepage-input, #default-library-input {
+		width: 80%;
+	}
+
+}

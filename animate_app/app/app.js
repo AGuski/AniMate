@@ -15,11 +15,13 @@ import { CompileDirective } from './modules/utils/directives/compile/compile.dir
 import { DragDividerDirective } from './modules/gui/directives/drag-divider/drag-divider.directive';
 
 /* Factories */
+import { settingsServiceFactory } from './modules/core/factories/settingsService.factory';
 import { propertyFactory } from './modules/gui/factories/property.factory';
 import { projectFactory } from './modules/gui/factories/project.factory';
 import { modalFactory } from './Modules/gui/factories/modal.factory';
 
 /* Constants */
+import { DEFAULT_SETTINGS } from './modules/core/constants/defaultSettings.constant';
 import { projectConst } from './modules/gui/constants/project.constant';
 import { elementConst } from './modules/gui/constants/element.constant';
 import { keyframeConst } from './modules/gui/constants/keyframe.constant';
@@ -46,11 +48,13 @@ angular.module('aniMateApp', [
   .directive('dragDivider', DragDividerDirective)
 
   /* Factories */
+  .factory('settingsService', settingsServiceFactory)
   .factory('propertyFactory',propertyFactory)
   .factory('projectFactory',projectFactory)
   .factory('modalFactory', modalFactory)
 
   /* Constants */
+  .constant('DEFAULT_SETTINGS', DEFAULT_SETTINGS)
   .constant('Project', projectConst)
   .constant('Element', elementConst)
   .constant('Keyframe', keyframeConst)

@@ -1,9 +1,13 @@
 let webViewController = class {
-  constructor($scope, $window, modalFactory, projectFactory){
+  constructor($scope, $window, modalFactory, projectFactory, settingsService){
     'ngInject';
 
     this.scope = $scope;
     this.webview = document.querySelector('webview');
+
+    settingsService.getAppSetting('homepage', (value) => {
+      this.url = value;
+    });
 
     this.webview.addContentScripts([
       {
@@ -18,6 +22,20 @@ let webViewController = class {
         run_at: 'document_start'
       }
     ]);
+
+    /* If injectLibByDefault is true, inject it here */
+    settingsService.getAppSetting('injectLibByDefault', (value) => {
+      if (value) {
+        settingsService.getAppSetting('defaultLibrary', (value) => {
+          let script = { code: `
+            var animateLibInjector = document.createElement('script');
+            animateLibInjector.setAttribute('src','${value}');
+            document.head.appendChild(animateLibInjector);
+          ` };
+          this.scope.$emit('addScript','loadGSLib', script);
+        });
+      }
+    });
 
     /* dynamic creation of the elements in context menu */
     chrome.runtime.onMessage.addListener((message) => {
@@ -57,6 +75,35 @@ let webViewController = class {
     this.scope.$on('injectScript', function(event, script) {
       event.currentScope.ctrl.execute(script);
     });
+
+    // Eventlistener - To have access to the scope of the website and third party js, scripts must be embedded.
+    this.scope.$on('EmbedScript', function(event, script) {
+      let embeddScript = 
+      ` var script = document.createElement('script');
+        script.textContent = '${script}';
+        document.head.appendChild(script);
+        script.remove();`
+      event.currentScope.ctrl.execute({ code: embeddScript });
+    });
+
+    this.scope.$on('addScript', (event, name, script) =>{
+      this.webview.addContentScripts([
+          {
+            name: name,
+            matches: ['http://*/*', 'https://*/*'],
+            js: script,
+            run_at: 'document_end' // <--- Maybe make this argument too...
+          }
+        ]);
+    });
+
+    this.scope.$on('removeScripts', (events, scriptArray) => {
+      this.webview.removeContentScripts(scriptArray);
+    });
+
+    this.scope.$on('refreshWebview', ()=> {
+      this.refresh();
+    });
   }
 
   /* Custom Functions */
@@ -66,7 +113,7 @@ let webViewController = class {
   }
 
   execute(script) {
-    this.webview.executeScript({ code: script});
+    this.webview.executeScript(script);
   }
 }
 

@@ -14,7 +14,7 @@ let propertyViewController = class {
   }
 
   injectAScript(script){
-    this.rootScope.$broadcast('injectScript', script);
+    this.rootScope.$broadcast('EmbedScript', script);
   }
 }
 

@@ -1,9 +1,19 @@
 let AppBarController = class {
-  constructor($element, $state) {
+  constructor($element, $state, modalFactory) {
     'ngInject';
     this.state = $state;
     this.element = $element;
     this.title='AniMate';
+    this.modalFactory = modalFactory;
+  }
+
+  toggleSettings(){
+    const SETTINGS_TITLE = 'Settings';
+    if (document.getElementById('modal') && this.modalFactory.getTitle() === SETTINGS_TITLE) {
+      this.modalFactory.removeModal();
+    } else {
+      this.modalFactory.createModal(SETTINGS_TITLE, '<div ui-view="settings"></div>');
+    }
   }
 
   /*

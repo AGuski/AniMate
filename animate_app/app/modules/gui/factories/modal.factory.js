@@ -1,11 +1,12 @@
 export function modalFactory($rootScope, $compile, $templateCache){
 	'ngInject';
 
-	let modalContent;
+	let modalContent, modalTitle;
 
 	return {
 		createModal,
-		removeModal
+		removeModal,
+		getTitle
 	};
 
 	/**
@@ -13,6 +14,11 @@ export function modalFactory($rootScope, $compile, $templateCache){
 	 *  $scope parameter is optional. It makes the parent scope available in the content template.
 	 */
 	function createModal(title, content, $scope) {
+		modalTitle = title;
+		// There can be only one modal!
+		if (document.getElementById('modal')) {
+			removeModal();
+		}
 		if (content.templateUrl !== undefined) {
 			modalContent = $templateCache.get(content.templateUrl);
 		} else {
@@ -26,5 +32,9 @@ export function modalFactory($rootScope, $compile, $templateCache){
 
 	function removeModal(){
 		angular.element(document.querySelector('modal')).remove();
+	}
+
+	function getTitle(){
+		return modalTitle;
 	}
 }

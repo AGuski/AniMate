@@ -1,0 +1,23 @@
+<div id="settings-view">
+
+  <form name="settingsForm">
+    <fieldset>
+      <input type="checkbox" id="auto-inject-checkbox"
+      ng-model="ctrl.settings.injectLibByDefault" 
+      ng-change="ctrl.toggleAutoInjection()"
+      ng-checked="ctrl.settings.injectLibByDefault"
+      >
+      <label for="auto-inject-checkbox"> Inject the Greensock library into page by default.</label>
+      <br><br>
+      <label for="default-library-input">Default Animation Library:</label><br>
+      <input id="default-library-input" type="text" ng-model="ctrl.settings.defaultLibrary">
+      <button type="button" ng-click="ctrl.saveKeyValue('defaultLibrary', ctrl.settings.defaultLibrary)">save</button>
+    </fieldset>
+    <fieldset>
+      <label for="default-homepage-input">Default Homepage on Startup:</label><br>
+      <input id="default-homepage-input" type="text" ng-model="ctrl.settings.homepage">
+      <button type="button" ng-click="ctrl.saveKeyValue('homepage', ctrl.settings.homepage)">save</button>
+    </fieldset>
+  </form>
+
+</div>
