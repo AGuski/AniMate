@@ -7,12 +7,11 @@ export function projectFactory(Element, Project){
     addElement,
     getElements,
     getProject,
-    getProjectLength
+    getProjectLength,
+    getTime
   };
-
   function addElement(el){
-    let tempElement = new Element(el.name, el.class, el.id);
-    project.addElement(tempElement);
+    project.addElement(new Element(el, "Element_"+project._elements.length));
   }
   function getElements(){
     return project._elements;
@@ -22,5 +21,8 @@ export function projectFactory(Element, Project){
   }
   function getProjectLength(){
     return project._length;
+  }
+  function getTime(){
+    return project._dot;
   }
 }

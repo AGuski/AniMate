@@ -12,10 +12,10 @@ timeline{
 		position: absolute;
 		cursor: pointer;
 		display: inline-block;
-		width: 12px;
-		height: 12px;
+		width: 14px;
+		height: 14px;
 		background-color: $light-green;
-		transform: rotate(45deg);
+		// transform: rotate(45deg);
 		border: 1px solid $darkest-grey;
 	}
 }

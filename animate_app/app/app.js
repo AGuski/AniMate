@@ -27,6 +27,7 @@ import { DEFAULT_SETTINGS } from './modules/core/constants/defaultSettings.const
 import { projectClassService } from './modules/core/classes/project.service';
 import { elementClassService } from './modules/core/classes/element.service';
 import { keyframeClassService } from './modules/core/classes/keyframe.service';
+import { timelineClassService } from './modules/core/classes/timeline.service';
 
 angular.module('aniMateApp', [
     'ui.router',
@@ -62,6 +63,7 @@ angular.module('aniMateApp', [
   .service('Project', projectClassService)
   .service('Element', elementClassService)
   .service('Keyframe', keyframeClassService)
+  .service('Timeline', timelineClassService)
 
   .config(function($sceProvider) {
     // Completely disable SCE.  For demonstration purposes only!

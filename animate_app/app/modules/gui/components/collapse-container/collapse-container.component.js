@@ -6,11 +6,7 @@ let CollapseContainerController = class {
 		this.data;
 		this.project= projectFactory.getProject();
 		this.actualElement = this.project._activeElement;
-		propertyFactory.getData().then(
-			(data) => {
-				this.data = data;
-			}
-		);
+		this.data = propertyFactory.getData();
 	}
 	toggle(){
 

@@ -1,25 +1,15 @@
 <table>
-	<tr ng-repeat="element in ctrl.content">
-		<td>
-			<div class="keyframe-indicator-frame">
-				<div class="previous fa fa-chevron-left" ng-click="ctrl.previous(element.name)"></div>
-				<div class="keyframe-indicator" ng-click="ctrl.activation(element.name)"></div>
-				<div class="next fa fa-chevron-right" ng-click="ctrl.next(element.name)"></div>
-			</div>
-		</td>
-		<td>{{element.name}} :</td>
-		<td>
-			<select ng-if="ctrl.isSelection(element.type)" name="{{element.name}}">
-				<option ng-repeat="option in element.options">
-					{{option}}
-				</option>
-			</select>
-			<input ng-if="!ctrl.isSelection(element.type)" type="{{element.type}}" name="{{element.name}}">
-			<select ng-if="!ctrl.isSelection(element.type)" name="{{element.name}}_value">
-				<option  ng-repeat="value in element.values" value="{{value}}">
-					{{value}}
-				</option>
-			</select>
-		</td>
-	</tr>
+  <tr ng-repeat="element in ctrl.content">
+    <td>
+      <div class="keyframe-indicator-frame">
+        <div class="previous fa fa-chevron-left" ng-click="ctrl.previous(element.name)"></div>
+        <div class="keyframe-indicator" ng-click="ctrl.activation(element.name)"></div>
+        <div class="next fa fa-chevron-right" ng-click="ctrl.next(element.name)"></div>
+      </div>
+    </td>
+    <td>{{element.name}} :</td>
+    <td>
+      <input type="{{element.type}}" name="{{element.name}}" ng-model="value" ng-value="ctrl.getValue(element.name);" ng-change="ctrl.changeValue(element.name, value)">
+    </td>
+  </tr>
 </table>

@@ -4,8 +4,8 @@ let timelineViewController = class {
     this.projectFactory = projectFactory;
     this.project = projectFactory.getProject();
     this.elements = this.project._elements;
-    this.Keyframe=Keyframe;
-    this.partnumber = 6;
+    this.Keyframe = Keyframe;
+    this.partnumber = 12;
   }
   getPartStyles(){
     return { 'width': 100/this.partnumber+'%'};
@@ -13,21 +13,21 @@ let timelineViewController = class {
   getPartNumber(){
     let array = new Array(this.partnumber);
     for(let a = 0; a<array.length; a++){
-      array[a]=a;
+      array[a] = a;
     }
     return array;
   }
 
   /* returns the activeElementClass to the active Element*/
   isActiveElement(element) {
-    if(this.project._activeElement.equalsByDescription(element)){
+    if(this.project._activeElement === element){
       return 'active';
     }
   }
 
   /* sets the active Element */
   setActiveElement(element) {
-    this.project._activeElement=element;
+    this.project._activeElement = element;
   }
 
   /* adds a Keyframe to active Element */
@@ -42,18 +42,15 @@ let timelineViewController = class {
     let min = Math.floor(this.project._pot/60);
     let sec = Math.floor(this.project._pot)-min*60;
     let msec = Math.floor((this.project._pot-Math.floor(this.project._pot))*1000);
-    if(sec<10){
-      sec = "0"+sec;
-    }
-    if(min<10){
-      min = "0"+min;
-    }
+    if(sec<10) sec = "0"+sec;
+    if(min<10) min = "0"+min;
     return min+":"+sec+":"+msec;
   }
 
   /* sets the time while clicking on the time-scale */
   doClick(event){
-    this.project._pot=this.project._length*(event.clientX-document.getElementById('time-scale').getBoundingClientRect().left)/document.getElementById('time-scale').clientWidth;
+    var x = event.clientX-document.getElementById('time-scale').getBoundingClientRect().left;
+    this.project._pot=this.project._length*(x)/document.getElementById('time-scale').clientWidth;
   }
 }
 
