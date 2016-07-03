@@ -7,12 +7,18 @@ import webView from './views/web-view/web-view';
 import propertyView from './views/property-view/property-view';
 import timelineView from './views/timeline-view/timeline-view';
 import fileView from './views/file-view/file-view';
+import settingsView from './views/settings-view/settings-view';
 
 export function stateConfig ($stateProvider) {
   'ngInject';
   $stateProvider
 
-    .state('main', mainView)
+    .state('main', {
+      views: {
+        'main': mainView,
+        'settings': settingsView
+      }
+    })
 
       /* default view setup */
       .state('main.default', {

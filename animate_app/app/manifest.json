@@ -11,7 +11,8 @@
     }
   },
   "permissions": [
-    "webview"
+    "webview",
+    "storage"
   ],
   "icons": { "16": "assets/icon.png" }
 }
