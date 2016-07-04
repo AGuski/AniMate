@@ -5,7 +5,7 @@
   position: relative;
   top: 0;
   left: 0;
-  margin-top: -10%;
+  margin-top: 3%;
 }
 
 .dropping {
@@ -20,7 +20,8 @@
     background: rgba(0,0,0,0.25);
 }*/
 #file-view button {
-  height: 30px;
+  height: 35px;
+  width: 30%;
   display: inline-block;
   background: -webkit-linear-gradient(#F9F9F9 40%, #E3E3E3 40%);
   background: linear-gradient(#F9F9F9 40%, #E3E3E3 50%);
@@ -39,6 +40,7 @@
 
 #url{
   height: 30px;
+  width: 50%;
 }
 
 #file-view button:not(:disabled):hover {
@@ -65,7 +67,7 @@
   display: none;
 }
 #file-view textarea {
-  width: 100%;
+  width: 85%;
   height: 110px;
   outline: none;
   padding: 1px;

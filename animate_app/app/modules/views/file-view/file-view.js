@@ -2,9 +2,81 @@
 
 
 let fileViewController = class {
+
+  chosenEntry = null;
   constructor(){
     'ngInject';
-  } 
+  }
+
+
+    chose_file(){
+        var accepts = [{
+            mimeTypes: ['text/*'],
+            extensions: ['js', 'css', 'txt', 'html', 'xml', 'tsv', 'csv', 'rtf']
+        }];
+        chrome.fileSystem.chooseEntry({type: 'openFile', accepts: accepts}, function(theEntry) {
+            if (!theEntry) {
+                output.textContent = 'No file selected.';
+                return;
+            }
+            // use local storage to retain access to this file
+            chrome.storage.local.set({'chosenFile': chrome.fileSystem.retainEntry(theEntry)});
+            loadFileEntry(theEntry);
+            loadFileToWebview(theEntry);
+        });
+    }
+
+    loadFileEntry(_chosenEntry) {
+        chosenEntry = _chosenEntry;
+        chosenEntry.file(function(file) {
+            readAsText(chosenEntry, function(result) {
+                textarea.value = result;
+            });
+            // Update display.
+            saveFileButton.disabled = false; // allow the user to save the content
+            displayEntryData(chosenEntry);
+        });
+    }
+
+    readAsText(fileEntry, callback) {
+        fileEntry.file(function(file) {
+            var reader = new FileReader();
+
+            reader.onerror = errorHandler;
+            reader.onload = function(e) {
+                callback(e.target.result);
+            };
+
+            reader.readAsText(file);
+        });
+    }
+
+    displayEntryData(theEntry) {
+        if (theEntry.isFile) {
+            chrome.fileSystem.getDisplayPath(theEntry, function(path) {
+                angular.element.('#filepath').value = path;
+                //document.querySelector('#file_path').value = path;
+            });
+        }
+        else {
+            angular.element.('#filepath').value = theEntry.fullPath;
+            //document.querySelector('#file_path').value = theEntry.fullPath;
+        }
+    }
+
+    // for files, read the text content into the websiteWebview
+    loadFileToWebview(_chosenEntry) {
+        chosenEntry = _chosenEntry;
+        chosenEntry.file(function(file) {
+            readAsText(chosenEntry, function(result) {
+                websiteWebview.value = result;
+            });
+            // Update display.
+            saveFileButton.disabled = false; // allow the user to save the content
+            displayEntryData(chosenEntry);
+        });
+    }
+
 }
 
 export default {
@@ -14,7 +86,7 @@ export default {
 }
 
 /*
-var chosenEntry = null;
+
 var openLocalFile = document.querySelector('#open_local');
 var chooseFileButton = document.querySelector('#choose_file');
 var chooseCurrentTab = document.querySelector('#current_tab')
@@ -44,33 +116,33 @@ chooseCurrentTab.addEventListener('click', function(e) {
     });
 });
 
-function displayEntryData(theEntry) {
-    if (theEntry.isFile) {
-        chrome.fileSystem.getDisplayPath(theEntry, function(path) {
-            document.querySelector('#file_path').value = path;
-        });
-        theEntry.getMetadata(function(data) {
-            document.querySelector('#file_size').textContent = data.size;
-        });
-    }
-    else {
-        document.querySelector('#file_path').value = theEntry.fullPath;
-        document.querySelector('#file_size').textContent = "N/A";
-    }
-}
+                            function displayEntryData(theEntry) {
+                                if (theEntry.isFile) {
+                                    chrome.fileSystem.getDisplayPath(theEntry, function(path) {
+                                        document.querySelector('#file_path').value = path;
+                                    });
+                                    theEntry.getMetadata(function(data) {
+                                        document.querySelector('#file_size').textContent = data.size;
+                                    });
+                                }
+                                else {
+                                    document.querySelector('#file_path').value = theEntry.fullPath;
+                                    document.querySelector('#file_size').textContent = "N/A";
+                                }
+                            }
 
-function readAsText(fileEntry, callback) {
-    fileEntry.file(function(file) {
-        var reader = new FileReader();
+                                        function readAsText(fileEntry, callback) {
+                                            fileEntry.file(function(file) {
+                                                var reader = new FileReader();
 
-        reader.onerror = errorHandler;
-        reader.onload = function(e) {
-            callback(e.target.result);
-        };
+                                                reader.onerror = errorHandler;
+                                                reader.onload = function(e) {
+                                                    callback(e.target.result);
+                                                };
 
-        reader.readAsText(file);
-    });
-}
+                                                reader.readAsText(file);
+                                            });
+                                        }
 
 function writeFileEntry(writableEntry, opt_blob, callback) {
     if (!writableEntry) {
@@ -125,18 +197,18 @@ function waitForIO(writer, callback) {
     setTimeout(reentrant, 100);
 }
 
-// for files, read the text content into the textarea
-function loadFileEntry(_chosenEntry) {
-    chosenEntry = _chosenEntry;
-    chosenEntry.file(function(file) {
-        readAsText(chosenEntry, function(result) {
-            textarea.value = result;
-        });
-        // Update display.
-        saveFileButton.disabled = false; // allow the user to save the content
-        displayEntryData(chosenEntry);
-    });
-}
+                            // for files, read the text content into the textarea
+                            function loadFileEntry(_chosenEntry) {
+                                chosenEntry = _chosenEntry;
+                                chosenEntry.file(function(file) {
+                                    readAsText(chosenEntry, function(result) {
+                                        textarea.value = result;
+                                    });
+                                    // Update display.
+                                    saveFileButton.disabled = false; // allow the user to save the content
+                                    displayEntryData(chosenEntry);
+                                });
+                            }
 
 
 openLocalFile.addEventListener('click', function openLocalInUrl(){
@@ -151,18 +223,18 @@ openLocalFile.addEventListener('click', function openLocalInUrl(){
 
 });
 
-// for files, read the text content into the websiteWebview
-function loadFileToWebview(_chosenEntry) {
-    chosenEntry = _chosenEntry;
-    chosenEntry.file(function(file) {
-        readAsText(chosenEntry, function(result) {
-            websiteWebview.value = result;
-        });
-        // Update display.
-        saveFileButton.disabled = false; // allow the user to save the content
-        displayEntryData(chosenEntry);
-    });
-}
+                        // for files, read the text content into the websiteWebview
+                        function loadFileToWebview(_chosenEntry) {
+                            chosenEntry = _chosenEntry;
+                            chosenEntry.file(function(file) {
+                                readAsText(chosenEntry, function(result) {
+                                    websiteWebview.value = result;
+                                });
+                                // Update display.
+                                saveFileButton.disabled = false; // allow the user to save the content
+                                displayEntryData(chosenEntry);
+                            });
+                        }
 
 function loadInitialFile(launchData) {
     if (launchData && launchData.items && launchData.items[0]) {
@@ -189,22 +261,22 @@ function loadInitialFile(launchData) {
     }
 }
 
-chooseFileButton.addEventListener('click', function(e) {
-    var accepts = [{
-        mimeTypes: ['text/!*'],
-        extensions: ['js', 'css', 'txt', 'html', 'xml', 'tsv', 'csv', 'rtf']
-    }];
-    chrome.fileSystem.chooseEntry({type: 'openFile', accepts: accepts}, function(theEntry) {
-        if (!theEntry) {
-            output.textContent = 'No file selected.';
-            return;
-        }
-        // use local storage to retain access to this file
-        chrome.storage.local.set({'chosenFile': chrome.fileSystem.retainEntry(theEntry)});
-        loadFileEntry(theEntry);
-        loadFileToWebview(theEntry);
-    });
-});
+                                        chooseFileButton.addEventListener('click', function(e) {
+                                            var accepts = [{
+                                                mimeTypes: ['text/!*'],
+                                                extensions: ['js', 'css', 'txt', 'html', 'xml', 'tsv', 'csv', 'rtf']
+                                            }];
+                                            chrome.fileSystem.chooseEntry({type: 'openFile', accepts: accepts}, function(theEntry) {
+                                                if (!theEntry) {
+                                                    output.textContent = 'No file selected.';
+                                                    return;
+                                                }
+                                                // use local storage to retain access to this file
+                                                chrome.storage.local.set({'chosenFile': chrome.fileSystem.retainEntry(theEntry)});
+                                                loadFileEntry(theEntry);
+                                                loadFileToWebview(theEntry);
+                                            });
+                                        });
 
 
 
@@ -247,4 +319,5 @@ var dnd = new DnDFileController('body', function(data) {
     displayEntryData(chosenEntry);
 });
 
-loadInitialFile(launchData);*/
+loadInitialFile(launchData);
+*/
