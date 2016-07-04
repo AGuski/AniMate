@@ -18,7 +18,8 @@ import { DragDividerDirective } from './modules/gui/directives/drag-divider/drag
 import { settingsServiceFactory } from './modules/core/factories/settingsService.factory';
 import { propertyFactory } from './modules/gui/factories/property.factory';
 import { projectFactory } from './modules/gui/factories/project.factory';
-import { modalFactory } from './Modules/gui/factories/modal.factory';
+import { modalFactory } from './modules/gui/factories/modal.factory';
+import { generatorFactory } from './modules/core/factories/generator.factory';
 
 /* Constants */
 import { DEFAULT_SETTINGS } from './modules/core/constants/defaultSettings.constant';
@@ -55,6 +56,7 @@ angular.module('aniMateApp', [
   .factory('propertyFactory',propertyFactory)
   .factory('projectFactory',projectFactory)
   .factory('modalFactory', modalFactory)
+  .factory('generatorFactory', generatorFactory)
 
   /* Constants */
   .constant('DEFAULT_SETTINGS', DEFAULT_SETTINGS)
