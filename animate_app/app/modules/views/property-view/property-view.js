@@ -1,7 +1,7 @@
 let propertyViewController = class {
-  constructor($rootScope, propertyFactory){
+  constructor($rootScope, propertyFactory, projectFactory){
     'ngInject';
-
+    this.project= projectFactory.getProject();
     this.data;
     propertyFactory.getData().then(
       (data) => {
@@ -15,6 +15,22 @@ let propertyViewController = class {
 
   injectAScript(script){
     this.rootScope.$broadcast('EmbedScript', script);
+  }
+  getElementTitle(){
+    if(this.project._activeElement === null) return "Keine Auswahl";
+    return this.project._activeElement.getTitel();
+  }
+  getTagName(){
+    if(this.project._activeElement === null) return "";
+    return this.project._activeElement.getTagName();
+  }
+  getClass(){
+    if(this.project._activeElement === null) return "";
+    return this.project._activeElement.getClass();
+  }
+  getId(){
+    if(this.project._activeElement === null) return "";
+    return this.project._activeElement.getId();
   }
 }
 

@@ -1,12 +1,16 @@
 export function propertyFactory($http){
   'ngInject';
 
+  let data = $http.get("assets/properties.json").then(function (properties) {
+    return properties.data;
+  });
+  
   return{
     getData
-  };
+  }
 
   function getData(){
-    return $http.get("assets/properties.json")
-    .then(properties => properties.data);
+    return data;
   }
+  
 }
