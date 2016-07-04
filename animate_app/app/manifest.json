@@ -12,7 +12,8 @@
   },
   "permissions": [
     "webview",
-    "storage"
+    "storage",
+    {"fileSystem": ["write", "retainEntries", "directory"]} 
   ],
   "icons": { "16": "assets/icon.png" }
 }
