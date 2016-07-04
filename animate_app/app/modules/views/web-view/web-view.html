@@ -1,11 +1,22 @@
 <div id="web-view">
-  <span>Web View</span>
-  <form name="ctrl.webViewForm">
-    <input type="text" form="webViewForm"
-      ng-model="ctrl.url">
-    <button id="refreshButton" ng-click="ctrl.refresh()">refresh the page</button>
-  </form>
+
+
+  <div id="controls">
+
+    <button id="back" title="Go Back" ng-click="ctrl.backTo()">&#9664;</button>
+    <button id="forward" title="Go Forward" ng-click="ctrl.forward()">&#9654;</button>
+    <button id="home" title="Go Home"  ng-click="ctrl.getHome()">&#8962;</button>
+    <button id="reload" title="Reload" ng-click="ctrl.refresh()">&#10227;</button>
+
+    <form id="location-form" name="ctrl.webViewForm">
+      <div id="center-column">
+        <input id="location" type="text" form="webViewForm"   ng-model-options="{ updateOn: 'enter' }" ng-value="ctrl.url" ng-model="ctrl.url" ng-init="ctrl.url='http://www.google.de'" >
+      </div>
+      <input type="submit" value="Go" ng-click="navigateTo()">
+    </form>
+  </div>
+
   <webview
-    src="{{ctrl.url}}"
-    autosize="off"></webview>
+          src="{{ctrl.url}}"
+          autosize="off"></webview>
 </div>
