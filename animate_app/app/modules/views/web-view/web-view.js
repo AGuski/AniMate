@@ -1,8 +1,10 @@
 let webViewController = class {
-  constructor($scope, $window, modalFactory, projectFactory, settingsService){
+  constructor($scope, $window, modalFactory, projectFactory, settingsService, $timeout){
     'ngInject';
 
     this.scope = $scope;
+    this.settingsService = settingsService;
+    this.timeout = $timeout;
     this.webview = document.querySelector('webview');
 
     settingsService.getAppSetting('homepage', (value) => {
@@ -110,10 +112,26 @@ let webViewController = class {
 
   refresh() {
     this.webview.reload();
+
+  }
+  backTo(){
+    this.webview.back();
+
+  }
+
+  forward(){
+    this.webview.forward();
   }
 
   execute(script) {
-    this.webview.executeScript(script);
+    this.webview.executeScript({ code: script});
+  }
+
+  getHome(){
+    this.settingsService.getAppSetting('homepage', (value) => {
+      this.url = value;
+      this.timeout(this.webview.reload(), 100);
+    });
   }
 }
 
