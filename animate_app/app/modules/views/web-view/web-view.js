@@ -89,6 +89,9 @@ let webViewController = class {
     });
 
     this.scope.$on('addScript', (event, name, script) =>{
+
+
+
       this.webview.addContentScripts([
           {
             name: name,
@@ -133,6 +136,8 @@ let webViewController = class {
       this.timeout(this.webview.reload(), 100);
     });
   }
+
+
 }
 
 export default {
