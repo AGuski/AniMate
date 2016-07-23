@@ -16,6 +16,15 @@ let AppBarController = class {
     }
   }
 
+  toggleFileExport(){
+    const MODAL_TITLE = 'File Export';
+    if (document.getElementById('modal') && this.modalFactory.getTitle() === MODAL_TITLE) {
+      this.modalFactory.removeModal();
+    } else {
+      this.modalFactory.createModal(MODAL_TITLE, '<div ui-view="fileExport"></div>');
+    }
+  }
+
   /*
    * Takes an array with states as strings and switches betweet them in a circle
    */
