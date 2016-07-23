@@ -7,6 +7,7 @@ import webView from './views/web-view/web-view';
 import propertyView from './views/property-view/property-view';
 import timelineView from './views/timeline-view/timeline-view';
 import fileView from './views/file-view/file-view';
+import fileExportView from './views/file-export-view/file-export-view';
 import settingsView from './views/settings-view/settings-view';
 
 export function stateConfig ($stateProvider) {
@@ -16,6 +17,7 @@ export function stateConfig ($stateProvider) {
     .state('main', {
       views: {
         'main': mainView,
+        'fileExport': fileExportView,
         'settings': settingsView
       }
     })
