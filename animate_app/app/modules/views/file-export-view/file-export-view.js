@@ -67,7 +67,11 @@ let fileExportViewController = class {
     // this.$rootScope.$broadcast('EmbedScript', singleLineCode);
   }
 
+<<<<<<< 5ff93235ceea8bc5b7c72a67454612532cfd5254
   chooseFile(callback) {
+=======
+  chooseFile() {
+>>>>>>> feat/add-save-to-file/AN-43
     // choose file to save
     chrome
     .fileSystem
@@ -104,8 +108,8 @@ let fileExportViewController = class {
   }
 
   saveToFile() {
-    const code = this.generateCode((code) => {
 
+    this.generateCode((code) => {
       if (this.minified) {
         code = this.minifie(code);
       }
@@ -115,7 +119,7 @@ let fileExportViewController = class {
           this.message = 'Error writing file: ' + e;
           this.$scope.$apply();
         };
-        writer.onwriteend = (e) => {
+        writer.onwriteend = () => {
           this.message = 'Writing file completed.';
           this.$scope.$apply();
         };
