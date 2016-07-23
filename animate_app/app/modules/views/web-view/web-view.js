@@ -85,7 +85,7 @@ let webViewController = class {
         script.textContent = '${script}';
         document.head.appendChild(script);
         script.remove();`
-      event.currentScope.ctrl.execute({ code: embeddScript });
+      event.currentScope.ctrl.execute(embeddScript);
     });
 
     this.scope.$on('addScript', (event, name, script) =>{

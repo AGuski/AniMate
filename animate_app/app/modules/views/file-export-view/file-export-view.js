@@ -105,7 +105,6 @@ let fileExportViewController = class {
 
   saveToFile() {
     this.generateCode((code) => {
-
       if (this.minified) {
         code = this.minifie(code);
       }
