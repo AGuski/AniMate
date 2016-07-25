@@ -11,14 +11,16 @@ app-bar {
   border-bottom: 1px solid $light-grey;
 
   padding: 0px;
-  .brand-text, i{
+
+  .brand-text, i {
     cursor: pointer;
     margin: 0;
     font-size: 18px;
     margin-left: 0px;
     padding: 10px;
   }
-  .brand-text{
+
+  .brand-text {
     color: $darkest-grey;
   }
 
@@ -34,6 +36,17 @@ app-bar {
 
     li {
       display: inline;
+      color: #a3a3a3;
+      transition: color 0.25s;
+
+      &:hover {
+        cursor: pointer;
+        color: #222;
+
+        i {
+          @extend .fa.button:hover;
+        }
+      }
     }
 
     &.right {
