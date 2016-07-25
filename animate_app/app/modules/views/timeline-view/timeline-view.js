@@ -6,6 +6,10 @@ let timelineViewController = class {
     this.elements = this.project._elements;
     this.Keyframe = Keyframe;
     this.partnumber = 12;
+    this.playmarkerEl = document.getElementById('play-marker');
+    this.timelineControlsEl = document.getElementById('timeline-controls');
+    this.timeEl = document.getElementsByClassName('time')[0];
+    this.playmarkerEl.style.left=(this.timeEl.offsetWidth)+"px";
   }
 
   play(){
@@ -60,7 +64,8 @@ let timelineViewController = class {
   /* sets the time while clicking on the time-scale */
   doClick(event){
     var x = event.clientX-document.getElementById('time-scale').getBoundingClientRect().left;
-    this.project._pot=this.project._length*(x)/document.getElementById('time-scale').clientWidth;
+    this.project._pot = this.project._length*(x)/document.getElementById('time-scale').clientWidth;
+    this.playmarkerEl.style.left = (event.x-this.timelineControlsEl.offsetWidth)+"px";
   }
 }
 
