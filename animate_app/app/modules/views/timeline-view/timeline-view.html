@@ -1,28 +1,39 @@
 <div id="timeline-view">
-  <div class="header">
-    <div class="time" ng-click="ctrl.addKeyframe();">
-      {{ctrl.printTime();}}
+  <div id="timeline-controls">
+    <ul class="timeline-controls-items">
+      <li ng-click="ctrl.play()"><i class="fa button fa-play"></i></li>
+      <li ng-click="ctrl.addKeyframe()"><i class="fa button fa-plus"></i></li>
+    </ul>
+    
+  </div>
+  <div id="timeline-content">
+    <div class="header">
+      <div class="time">
+        {{ctrl.printTime();}}
+      </div>
+      <div id="time-scale" ng-click="ctrl.doClick($event);">
+        <div class="time-scale-part" ng-style="ctrl.getPartStyles();" ng-repeat="iww in ctrl.getPartNumber()">
+          <div class="time-scale-point"></div>
+        </div>
+      </div>
     </div>
-    <div id="time-scale" ng-click="ctrl.doClick($event);">
-      <div class="time-scale-part" ng-style="ctrl.getPartStyles();" ng-repeat="iww in ctrl.getPartNumber()">
-        <div class="time-scale-point"></div>
+    <div class="content">
+      <div class="elementList">
+        <ul>
+          <li ng-repeat="el in ctrl.elements" class="element" ng-class="ctrl.isActiveElement(el);" ng-click="ctrl.setActiveElement(el);">
+            {{el.getTitel()}}
+          </li>
+        </ul>
+      </div>
+      <div class="timeline">
+        <ul>
+          <li ng-repeat="el in ctrl.elements" class="element">
+            <timeline element="el"></timeline>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
-  <div class="content">
-    <div class="elementList">
-      <ul>
-        <li ng-repeat="el in ctrl.elements" class="element" ng-class="ctrl.isActiveElement(el);" ng-click="ctrl.setActiveElement(el);">
-          {{el.getTitel()}}
-        </li>
-      </ul>
-    </div>
-    <div class="timeline">
-      <ul>
-        <li ng-repeat="el in ctrl.elements" class="element">
-          <timeline element="el"></timeline>
-        </li>
-      </ul>
-    </div>
-  </div>
+
+  
 </div>
