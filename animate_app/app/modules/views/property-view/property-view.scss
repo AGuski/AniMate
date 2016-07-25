@@ -9,11 +9,18 @@
       margin-left: 30px;
       margin-bottom: 10px;
     }
+
+    button {
+      float: left;
+    }
+
+
   }
   .header {
     background-color: $lightest-grey;
     border-bottom: 1px solid $light-grey;
     padding: 10px;
+    clear: left;
 
     h4{
       margin-top: 0;

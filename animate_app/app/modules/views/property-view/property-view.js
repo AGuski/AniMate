@@ -16,6 +16,10 @@ let propertyViewController = class {
   injectAScript(script){
     this.rootScope.$broadcast('EmbedScript', script);
   }
+  injectAScriptAnimation(script){
+    this.rootScope.$broadcast('EmbedScript', script);
+  }
+
   getElementTitle(){
     if(this.project._activeElement === null) return "Keine Auswahl";
     return this.project._activeElement.getTitel();
