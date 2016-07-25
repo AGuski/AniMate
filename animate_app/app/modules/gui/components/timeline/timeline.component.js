@@ -1,11 +1,30 @@
 let TimelineController = class {
-  constructor(Keyframe, projectFactory) {
+  constructor(Keyframe, projectFactory, $document, $element, $scope) {
     'ngInject';
     this.timeline = this.element._timeline;
     this.keyframes = this.element._timeline._keyframes;
     this.project = projectFactory.getProject();
     this.projectLength = projectFactory.getProjectLength();
-    this.draggedKey = null;
+    this.selectedKeyframe = null;
+
+    // Drag EventListener
+    $element.on('mousedown', (event) => {
+      event.preventDefault();
+      if (angular.element(event.target).hasClass('keyframe')) {
+        $document.on('mousemove', (event) => {
+            let relativePos = (event.clientX-document.getElementById('time-scale').getBoundingClientRect().left)/document.getElementById('time-scale').clientWidth;
+            if (relativePos > 0 && relativePos < 1) {
+              this.selectedKeyframe._pot=this.project._length*relativePos;
+              $scope.$apply();
+            }
+        });
+        $document.on('mouseup', () => {
+          $document.off('mousemove', this.mousemove);
+          $document.off('mouseup', this.mouseup);
+        });
+      }
+    });
+
   }
   getStyling(key){
     let positionLeft = (100*(key._pot/this.projectLength))+'%';
@@ -13,18 +32,7 @@ let TimelineController = class {
   }
   selectKeyframe(keyframe){
     this.project._pot = keyframe._pot;
-    console.log(keyframe._properties);
-  }
-  drag(key){
-    this.draggedKey = key;
-  }
-  move(key){
-    if(this.draggedKey === key){
-      key._pot=this.project._length*(event.clientX-document.getElementById('time-scale').getBoundingClientRect().left)/document.getElementById('time-scale').clientWidth;
-    }
-  }
-  drop(){
-    this.draggedKey = null;
+    this.selectedKeyframe = keyframe;
   }
 }
 
