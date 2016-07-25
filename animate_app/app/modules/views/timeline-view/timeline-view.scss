@@ -42,7 +42,7 @@
   }
 
   #timeline-content {
-
+    position: relative;
     height: 100%;
     overflow: hidden;
     display: flex;
@@ -122,6 +122,15 @@
       }
     }
 
+  }
+
+  #play-marker{
+    position: absolute;
+    top:0px;
+    left: 100px;
+    width: 1px;
+    background-color: red;
+    height: 100%;
   }
 
   
