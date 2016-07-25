@@ -6,7 +6,6 @@ import mainView from './views/main-view/main-view';
 import webView from './views/web-view/web-view';
 import propertyView from './views/property-view/property-view';
 import timelineView from './views/timeline-view/timeline-view';
-import fileView from './views/file-view/file-view';
 import fileExportView from './views/file-export-view/file-export-view';
 import settingsView from './views/settings-view/settings-view';
 
@@ -14,41 +13,29 @@ export function stateConfig ($stateProvider) {
   'ngInject';
   $stateProvider
 
-    .state('main', {
-      views: {
-        'main': mainView,
-        'fileExport': fileExportView,
-        'settings': settingsView
-      }
-    })
+  .state('main', {
+    views: {
+      'main': mainView,
+      'fileExport': fileExportView,
+      'settings': settingsView
+    }
+  })
 
-      /* default view setup */
-      .state('main.default', {
-        views: {
-          'top-left': webView,
-          'top-right': propertyView,
-          'bottom': timelineView
-        }
-      })
-        /* fileView instead of propertyView setup */
-        .state('main.default.file', {
-          views: {
-            'top-right@main': fileView
-          }
-        })
+  /* default view setup */
+  .state('main.default', {
+    views: {
+      'top-left': webView,
+      'top-right': propertyView,
+      'bottom': timelineView
+    }
+  })
 
-      /* swapped view setup */
-      .state('main.swapped', {
-        views: {
-          'top-right': webView,
-          'top-left': propertyView,
-          'bottom': timelineView
-        }
-      })
-        /* fileView instead of propertyView setup */
-        .state('main.swapped.file', {
-          views: {
-            'top-left@main': fileView
-          }
-        });
+  /* swapped view setup */
+  .state('main.swapped', {
+    views: {
+      'top-right': webView,
+      'top-left': propertyView,
+      'bottom': timelineView
+    }
+  })
 }

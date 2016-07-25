@@ -1,11 +1,12 @@
 let fileExportViewController = class {
 
-  constructor(generatorFactory, $rootScope, $scope){
+  constructor(generatorFactory, $rootScope, $scope, projectFactory){
     'ngInject';
     this.filepath = 'choose file';
     this.$rootScope = $rootScope;
     this.$scope = $scope;
     this.generatorFactory = generatorFactory;
+    this.projectFactory = projectFactory;
 
     this.minified = false;
     this.writableFileEntry = '';
@@ -13,58 +14,12 @@ let fileExportViewController = class {
   } 
 
   generateCode(callback) {
-
-    const timeline1 = {
-      name: 'testtimeline1',
-      attributes: {
-        repeat: -1, 
-        repeatDelay: 1
-      },
-      element: {
-        name: 'testobject1',
-        selector: '#wrap',
-        keyframes: [
-          {
-            time: 1,
-            attributes: {
-              left: '10vw', 
-              backgroundColor: 'blue'
-            }
-          },
-          {
-            time: 1,
-            attributes: {
-              top: '10vw', 
-              backgroundColor: 'red'
-            }
-          }, 
-          {
-            time: 1, 
-            attributes: {
-              left: '0vw', 
-              backgroundColor: 'blue'
-            }
-          },
-          {
-            time: 1,
-            attributes: {
-              top: '0vw', 
-              backgroundColor: 'red'
-            }
-          }
-        ]
-      }
-    }
-
-    const timelines = [
-      timeline1
-    ]
-
     // code
-    callback(this.generatorFactory.generateCode(timelines));
-
-    // // embed of code
-    // this.$rootScope.$broadcast('EmbedScript', singleLineCode);
+    callback(
+      this.generatorFactory.generateCode(
+        this.projectFactory.getTimelinesForGeneration()
+      )
+    );
   }
 
   chooseFile() {
@@ -107,7 +62,7 @@ let fileExportViewController = class {
 
     this.generateCode((code) => {
       if (this.minified) {
-        code = this.minifie(code);
+        code = this.generatorFactory.minifie(code);
       }
 
       this.file.createWriter((writer) => {
@@ -122,10 +77,6 @@ let fileExportViewController = class {
         writer.write(new Blob([code]), {type: 'text/javascript'});
       });
     });
-  }
-
-  minifie(code) {
-   return code.replace(/(\r\n|\n|\r)/gm,"").replace(/\t/gm, '');
   }
 }
 

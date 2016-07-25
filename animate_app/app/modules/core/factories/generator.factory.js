@@ -71,9 +71,27 @@ export function generatorFactory() {
     return string;
   }
 
+  var createAnimationsForInjection = (timelines) => {
+    var indentation = '\t';
+
+    var string = '';
+    string += '(function() {\n';
+    timelines.forEach((timeline) => {
+      string += createAnimation(timeline, indentation);
+    });
+    string += '})($);';
+    return string;
+  }
+
   return {
     generateCode: (timelines) => {
       return createAnimations(timelines);
+    },
+    generateInjectibleCode: (timelines) => {
+      return createAnimationsForInjection(timelines);
+    },
+    minifie: (code) => {
+      return code.replace(/(\r\n|\n|\r)/gm,"").replace(/\t/gm, '');
     }
   }
 }

@@ -67,5 +67,13 @@ export function timelineClassService(Keyframe){
         }
       });
     }
+
+    convertTimelineForGeneration() {
+      const keyframes = [];
+      this._keyframes.forEach((keyframe) => {
+        keyframes.push(keyframe.convertKeyframeForGeneration());
+      });
+      return keyframes;
+    }
   };
 }

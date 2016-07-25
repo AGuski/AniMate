@@ -35,6 +35,13 @@ let webViewController = class {
             document.head.appendChild(animateLibInjector);
           ` };
           this.scope.$emit('addScript','loadGSLib', script);
+
+          let script2 = { code: `
+            var animateLibInjector = document.createElement('script');
+            animateLibInjector.setAttribute('src','https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js');
+            document.head.appendChild(animateLibInjector);
+          ` };
+          this.scope.$emit('addScript','loadJQuery', script2);
         });
       }
     });
@@ -58,7 +65,6 @@ let webViewController = class {
     $window.addEventListener("message", (event) => {
       switch (event.data.type) {
         case 'element':
-          console.log(event.data.element);
           projectFactory.addElement(event.data.element);
 
           break;
@@ -93,13 +99,13 @@ let webViewController = class {
 
 
       this.webview.addContentScripts([
-          {
-            name: name,
-            matches: ['http://*/*', 'https://*/*'],
-            js: script,
-            run_at: 'document_end' // <--- Maybe make this argument too...
-          }
-        ]);
+        {
+          name: name,
+          matches: ['http://*/*', 'https://*/*'],
+          js: script,
+          run_at: 'document_end' // <--- Maybe make this argument too...
+        }
+      ]);
     });
 
     this.scope.$on('removeScripts', (events, scriptArray) => {
