@@ -1,81 +1,125 @@
 #timeline-view {
-  
+
   height: 100%;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
 
-  >.header{
-    background-color: $lightest-grey;
-    border-bottom: 1px solid $dark-grey;
-    
-    .time{
-      float: left;
-      width: 200px;
-      text-align: center;
-      padding: 10px;
-      background-color: $light-grey;
-      border-right: 1px solid $dark-grey;
-    }
-    #time-scale{
-      float: left;
-      height: 36px;
-      width: calc(100% - 221px);
-      z-index: -1;
+  #timeline-controls {
+    width: 50px;
+    height: 100%;
+    background-color: red;
+    float: left;
 
-      .time-scale-part{
-        position: relative;
-        display: inline-block;
-        height: 36px;
+    .timeline-controls-items {
+    //width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-decoration: none;
+    list-style-type: none;
+    padding: 10px;
 
-        .time-scale-point{
-          position: absolute;
-          width: 2px;
-          height: 10px;
-          bottom: 0;
-          background-color: $dark-grey;
+    li {
+      display: inline;
+      color: #a3a3a3;
+      transition: color 0.25s;
+      margin-bottom: 10px;
+
+      &:hover {
+        cursor: pointer;
+        color: #222;
+
+        i {
+          @extend .fa.button:hover;
         }
       }
     }
+
   }
-  >.content{
-    overflow: auto;
-    >.elementList{
-      position: relative;
+  }
+
+  #timeline-content {
+
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+    >.header{
+      background-color: $lightest-grey;
+      border-bottom: 1px solid $dark-grey;
+
+      .time{
         float: left;
-      ul{
-        display: inline-block;
-        width: 220px;
-        margin: 0;
-        padding: 0;
-        list-style: none;
+        width: 200px;
+        text-align: center;
+        padding: 10px;
+        background-color: $light-grey;
         border-right: 1px solid $dark-grey;
-        li{
-          display: block;
-          text-align: center;
-          border-bottom: 1px solid $normal-grey;
-          padding: 10px;
-          background-color: $lightest-grey;
-          &.active{
-            background-color: $light-green;
+      }
+      #time-scale{
+        float: left;
+        height: 36px;
+        width: calc(100% - 221px);
+        z-index: -1;
+
+        .time-scale-part{
+          position: relative;
+          display: inline-block;
+          height: 36px;
+
+          .time-scale-point{
+            position: absolute;
+            width: 2px;
+            height: 10px;
+            bottom: 0;
+            background-color: $dark-grey;
           }
         }
       }
     }
-    >.timeline{
-      position: relative;
-      float: left;
-      width: calc(100% - 221px);
-      ul{
-        
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        display: block;
-        li{
-          
+    >.content{
+      overflow: auto;
+      >.elementList{
+        position: relative;
+        float: left;
+        ul{
+          display: inline-block;
+          width: 220px;
+          margin: 0;
+          padding: 0;
+          list-style: none;
+          border-right: 1px solid $dark-grey;
+          li{
+            display: block;
+            text-align: center;
+            border-bottom: 1px solid $normal-grey;
+            padding: 10px;
+            background-color: $lightest-grey;
+            &.active{
+              background-color: $light-green;
+            }
+          }
+        }
+      }
+      >.timeline{
+        position: relative;
+        float: left;
+        width: calc(100% - 221px);
+        ul{
+
+          margin: 0;
+          padding: 0;
+          list-style: none;
+          display: block;
+          li{
+
+          }
         }
       }
     }
+
   }
+
+  
 }
