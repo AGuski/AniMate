@@ -7,6 +7,15 @@ let timelineViewController = class {
     this.Keyframe = Keyframe;
     this.partnumber = 12;
   }
+
+  play(){
+
+  }
+
+  repeat(){
+    
+  }
+
   getPartStyles(){
     return { 'width': 100/this.partnumber+'%'};
   }
@@ -36,6 +45,7 @@ let timelineViewController = class {
       this.project._activeElement.addKeyframe(new this.Keyframe(this.project._pot));
     }
   }
+  
 
   /* prints the time as mm:ss:msms */
   printTime(){
