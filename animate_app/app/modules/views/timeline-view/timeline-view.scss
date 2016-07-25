@@ -6,8 +6,9 @@
   #timeline-controls {
     width: 50px;
     height: 100%;
-    background-color: red;
+    background-color: $light-grey;
     float: left;
+    border-right: 3px solid $dark-grey;
 
     .timeline-controls-items {
     //width: 30%;
@@ -17,7 +18,8 @@
     align-items: center;
     text-decoration: none;
     list-style-type: none;
-    padding: 10px;
+    padding: 2.5px;
+
 
     li {
       display: inline;
