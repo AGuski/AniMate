@@ -7,8 +7,9 @@ let fileExportViewController = class {
     this.$scope = $scope;
     this.generatorFactory = generatorFactory;
 
+    this.minified = false;
     this.writableFileEntry = '';
-    console.log($rootScope);
+    this.message = '';
   } 
 
   generateCode(callback) {
@@ -62,27 +63,40 @@ let fileExportViewController = class {
     // code
     callback(this.generatorFactory.generateCode(timelines));
 
-    // console.log(code);
-    // // code for injection
-    // const singleLineCode = code.replace(/(\r\n|\n|\r)/gm,"").replace(/\t/gm, '');
     // // embed of code
     // this.$rootScope.$broadcast('EmbedScript', singleLineCode);
   }
 
-  chooseFile(callback) {
+  chooseFile() {
     // choose file to save
     chrome
     .fileSystem
     .chooseEntry({
-        type: 'saveFile'
+        type: 'saveFile',
+        suggestedName: 'animation',
+        accepts: [
+          {
+            description: 'javascript',
+            mimeTypes: [
+              'text/javascript'
+            ],
+            extensions: [
+              'js'
+            ]
+          }
+        ]
       }, 
       (writableFileEntry) => {
         if (!chrome.runtime.lastError) {
           this.file = writableFileEntry;
-          this.filepath = this.file.fullPath;
-          this.$scope.$apply();
+          chrome.fileSystem.getDisplayPath(this.file, (path) => {
+            this.filepath = path;
+            this.$scope.$apply();
+          });
         } else {
-          console.log(chrome.runtime.lastError.message);
+          // this.message = chrome.runtime.lastError.message;
+          this.message = 'No file choosen.';
+          this.$scope.$apply();
           delete(chrome.runtime.lastError);
         }
       }
@@ -90,13 +104,28 @@ let fileExportViewController = class {
   }
 
   saveToFile() {
-    const code = this.generateCode((code) => {
-      this.file.createWriter(function(writer) {
-        writer.onerror = (e) => {console.log('error writing file', e)};
-        writer.onwriteend = (e) => {console.log('writing file completed')};
-        writer.write(new Blob([code]), {type: 'text/plain'});
+    this.generateCode((code) => {
+
+      if (this.minified) {
+        code = this.minifie(code);
+      }
+
+      this.file.createWriter((writer) => {
+        writer.onerror = (e) => {
+          this.message = 'Error writing file: ' + e;
+          this.$scope.$apply();
+        };
+        writer.onwriteend = () => {
+          this.message = 'Writing file completed.';
+          this.$scope.$apply();
+        };
+        writer.write(new Blob([code]), {type: 'text/javascript'});
       });
     });
+  }
+
+  minifie(code) {
+   return code.replace(/(\r\n|\n|\r)/gm,"").replace(/\t/gm, '');
   }
 }
 

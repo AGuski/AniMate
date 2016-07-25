@@ -1,7 +1,16 @@
 <div id="file-export-view">
   <button ng-click="ctrl.chooseFile()" id="saveToFile">Choose File</button>
-  <input id="file-path-input" type="text" ng-model="ctrl.filepath">
+  <input id="file-path-input" type="text" ng-model="ctrl.filepath" disabled="disabled">
+  <br>
+  <br>
+  <label>
+    <input id="export-minified" type="checkbox" ng-model="ctrl.minified">
+    &nbsp;&nbsp;Export Minified
+  </label>
   <br>
   <br>
   <button ng-click="ctrl.saveToFile()" id="saveToFile">Save to file</button>
+  <br>
+  <br>
+  <p class="message">{{ctrl.message}}</p>
 </div>
