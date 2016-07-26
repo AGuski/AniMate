@@ -5,5 +5,5 @@ export const DEFAULT_SETTINGS = {
 
 	/* Animation Library Injection Settings */
 	injectLibByDefault: false,
-	defaultLibrary: 'http://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/TweenLite.min.js'
+	defaultLibrary: 'https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/TweenMax.min.js'
 }

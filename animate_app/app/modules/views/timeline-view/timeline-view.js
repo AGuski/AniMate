@@ -1,7 +1,9 @@
 let timelineViewController = class {
-  constructor(projectFactory, Keyframe) {
+  constructor(projectFactory, generatorFactory, Keyframe, $rootScope) {
     'ngInject';
     this.projectFactory = projectFactory;
+    this.generatorFactory = generatorFactory;
+    this.$rootScope = $rootScope;
     this.project = projectFactory.getProject();
     this.elements = this.project._elements;
     this.Keyframe = Keyframe;
@@ -10,14 +12,24 @@ let timelineViewController = class {
     this.timelineControlsEl = document.getElementById('timeline-controls');
     this.timeEl = document.getElementsByClassName('time')[0];
     this.playmarkerEl.style.left=(this.timeEl.offsetWidth)+"px";
+    this.loop = 0;
+    this.activeLoop = {};
   }
 
   play(){
-
+    let code = this.generatorFactory.generateInjectibleCode(this.projectFactory.getTimelinesForGeneration(this.loop));
+    code = this.generatorFactory.minifie(code);
+    this.$rootScope.$broadcast('EmbedScript', code);
   }
 
   repeat(){
-    
+    if (this.loop === -1) {
+      this.activeLoop = {};
+      this.loop = 0;
+    } else {
+      this.activeLoop = {'color': '#222'};
+      this.loop = -1;
+    }
   }
 
   getPartStyles(){

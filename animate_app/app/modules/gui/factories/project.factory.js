@@ -8,21 +8,25 @@ export function projectFactory(Element, Project){
     getElements,
     getProject,
     getProjectLength,
-    getTime
+    getTime,
+    getTimelinesForGeneration
   };
-  function addElement(el){
+  function addElement(el) {
     project.addElement(new Element(el, "Element_"+project._elements.length));
   }
-  function getElements(){
+  function getElements() {
     return project._elements;
   }
-  function getProject(){
+  function getProject() {
     return project;
   }
-  function getProjectLength(){
+  function getProjectLength() {
     return project._length;
   }
-  function getTime(){
+  function getTime() {
     return project._dot;
+  }
+  function getTimelinesForGeneration(loop) {
+    return project.getTimelinesForGeneration(loop);
   }
 }
