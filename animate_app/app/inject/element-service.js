@@ -7,16 +7,16 @@ var an1M4t3 = {};
 
 
 /* Define Aniframe selection frame */
-var aniframe = document.createElement("aniframe");
-aniframe.style.border = "4px solid rgb(255, 0, 0)";
-aniframe.style.position = "fixed";
-aniframe.style.pointerEvents = "none";
-aniframe.innerHTML = "Hello";
+// var aniframe = document.createElement("aniframe");
+// aniframe.style.border = "4px solid rgb(255, 0, 0)";
+// aniframe.style.position = "fixed";
+// aniframe.style.pointerEvents = "none";
+// aniframe.innerHTML = "Hello";
 
 /*************** Event Listeners **************/
 
 window.addEventListener ('DOMContentLoaded', () => {
-  document.body.appendChild(aniframe);
+  // document.body.appendChild(aniframe);
 });
 
 window.addEventListener('mouseover', () => {
@@ -61,9 +61,9 @@ function getElementIdentifiers(elementArray) {
 /**
  * sets the position & size of the aniframe - NOT SATISFACTORY!!
  */
-function setAniframe(element) {
-  aniframe.style.width = element.offsetWidth+"px";
-  aniframe.style.height = element.offsetHeight+"px";
-  aniframe.style.left = element.offsetLeft+"px";
-  aniframe.style.top = element.offsetTop+"px";
-}
+// function setAniframe(element) {
+//   aniframe.style.width = element.offsetWidth+"px";
+//   aniframe.style.height = element.offsetHeight+"px";
+//   aniframe.style.left = element.offsetLeft+"px";
+//   aniframe.style.top = element.offsetTop+"px";
+// }
