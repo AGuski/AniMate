@@ -10,7 +10,13 @@
 
     <form id="location-form" name="ctrl.webViewForm">
       <div id="center-column">
-        <input id="location" type="text" form="webViewForm"   ng-model-options="{ updateOn: 'change blur' }" ng-value="ctrl.url"  ng-model="ctrl.url" ng-init="ctrl.url='http://www.google.de'" >
+        <input id="location" type="text" 
+          form="webViewForm" 
+          ng-model-options="{ updateOn: 'change blur' }" 
+          ng-value="ctrl.url"  
+          ng-model="ctrl.url" 
+          ng-init="ctrl.url='http://www.google.de'" 
+          format-URL>
       </div>
       <input type="submit" value="Go" >
     </form>
