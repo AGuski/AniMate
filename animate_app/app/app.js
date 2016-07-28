@@ -13,6 +13,7 @@ import modalComponent from './modules/gui/components/modal/modal.component';
 /* Directives */
 import { CompileDirective } from './modules/utils/directives/compile/compile.directive';
 import { DragDividerDirective } from './modules/gui/directives/drag-divider/drag-divider.directive';
+import { FormatURLDirective } from './modules/gui/directives/format-url.directive.js';
 
 /* Factories */
 import { settingsServiceFactory } from './modules/core/factories/settingsService.factory';
@@ -50,6 +51,7 @@ angular.module('aniMateApp', [
   /* Directives */
   .directive('compile', CompileDirective)
   .directive('dragDivider', DragDividerDirective)
+  .directive('formatUrl', FormatURLDirective)
 
   /* Factories */
   .factory('settingsService', settingsServiceFactory)
