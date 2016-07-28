@@ -30,13 +30,16 @@ export function elementClassService(Keyframe, Timeline) {
     convertElementForGeneration(loop) {
       const o = this._object;
       const tag = o.tagName.toLowerCase();
-      const className = o.className || '';
       let idSelector = '';
       if (o.id) {
         idSelector = '#' + o.id;
       }
-      const selector = tag + idSelector + className.replace(/[ ]+/, '.');
-      const name = tag + o.id + className.replace(/[_ \-]*/g, '');
+      let classSelector = '';
+      if (o.className) {
+        classSelector = '.' + o.className.replace(/[ ]+/g, '.');
+      }
+      const selector = tag + idSelector + classSelector;
+      const name = tag + o.id.replace(/[_ \-]*/g, '') + o.className.replace(/[_ \-]*/g, '');
       const timeline = {
         name: 'timeline' + name,
         attributes: {
