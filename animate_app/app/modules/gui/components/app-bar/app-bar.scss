@@ -22,6 +22,7 @@ app-bar {
 
   .brand-text {
     color: $darkest-grey;
+
   }
 
   .app-bar-items {
@@ -38,6 +39,12 @@ app-bar {
       display: inline;
       color: #a3a3a3;
       transition: color 0.25s;
+
+      #logo_image {
+
+        width: 85px;
+
+      }
 
       &:hover {
         cursor: pointer;
