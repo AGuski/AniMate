@@ -3,6 +3,7 @@ let AppBarController = class {
     'ngInject';
     this.state = $state;
     this.element = $element;
+    this.logo = 'assets/logo.png';
     this.title='AniMate';
     this.modalFactory = modalFactory;
   }
