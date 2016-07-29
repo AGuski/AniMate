@@ -4,13 +4,17 @@ export function elementClassService(Keyframe, Timeline) {
     constructor(object, title) {
       this._object = object;
       this._timeline = new Timeline();
-      this._title=title || "default";
+      this._title = title || "default";
     }
 
     getTitel() {
       return this._title;
     }
-    
+
+    getValue(property){
+      return this._object.style[property];
+    }
+
     getTagName() {
       return this._object.tagName;
     }
