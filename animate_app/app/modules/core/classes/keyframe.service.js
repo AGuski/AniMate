@@ -6,6 +6,24 @@ export function keyframeClassService(){
       this._properties = [];  //{'name': '', 'value': ''}
     }
 
+    contains(property){
+      let filtered = this._properties.filter((e) => {
+        return e.name === property;
+      });
+      return filtered.length !== 0;
+    }
+
+    getValue(property){
+      let filtered = this._properties.filter((e) => {
+        return e.name === property;
+      });
+      if(filtered.length === 0){
+        return null;
+      }else{
+        return filtered[0].value;
+      }
+    }
+
     addProperty(property) {
       let filtered = this._properties.filter((e) => {
         return e.name === property.name;

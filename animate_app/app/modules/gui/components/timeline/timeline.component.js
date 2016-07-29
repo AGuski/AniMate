@@ -1,5 +1,5 @@
 let TimelineController = class {
-  constructor(Keyframe, projectFactory, $document, $element, $scope) {
+  constructor(Keyframe, projectFactory, $document, $element, $scope, $rootScope) {
     'ngInject';
     this.timeline = this.element._timeline;
     this.keyframes = this.element._timeline._keyframes;
@@ -7,6 +7,7 @@ let TimelineController = class {
     this.projectLength = projectFactory.getProjectLength();
     this.selectedKeyframe = null;
     this.$scope = $scope;
+    this.$rootScope = $rootScope;
 
     // Drag EventListener
     $element.on('mousedown', (event) => {
@@ -36,6 +37,7 @@ let TimelineController = class {
   selectKeyframe(keyframe){
     this.setProjectPot(keyframe);
     this.selectedKeyframe = keyframe;
+    this.$rootScope.$broadcast('selectKeyframe', keyframe);
   }
 
   setProjectPot(keyframe) {

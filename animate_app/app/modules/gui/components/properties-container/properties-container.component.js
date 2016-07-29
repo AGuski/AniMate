@@ -1,8 +1,24 @@
 let propertiesContainerController = class {
-	constructor(projectFactory) {
+	constructor(projectFactory, $scope) {
 		'ngInject';
 		this.project = projectFactory.getProject();
-		this.activeElement=this.project._activeElement;
+		this.activeElement = this.project._activeElement;
+
+		for(let x in this.content){
+			this.content[x].value = "";
+		}
+
+		$scope.$on('selectKeyframe', (event, keyframe)=>{
+			this.activeElement = this.project._activeElement;
+			for(let x in this.content){
+				if(keyframe.contains(this.content[x].name)){
+					this.content[x].value = keyframe.getValue(this.content[x].name);
+				}else{
+					this.content[x].value = this.activeElement.getValue(this.content[x].name);
+				}
+			}
+		});
+
 	}
 	getValue(name){
 		if(this.project._activeElement === null) return "";

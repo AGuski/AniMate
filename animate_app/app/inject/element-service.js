@@ -7,11 +7,11 @@ var an1M4t3 = {};
 
 
 /* Define Aniframe selection frame */
-// var aniframe = document.createElement("aniframe");
-// aniframe.style.border = "4px solid rgb(255, 0, 0)";
-// aniframe.style.position = "fixed";
-// aniframe.style.pointerEvents = "none";
-// aniframe.innerHTML = "Hello";
+var aniframe = document.createElement("aniframe");
+aniframe.style.border = "4px solid rgb(255, 0, 0)";
+aniframe.style.position = "fixed";
+aniframe.style.pointerEvents = "none";
+aniframe.innerHTML = "Hello";
 
 /*************** Event Listeners **************/
 
