@@ -35,6 +35,7 @@ let timelineViewController = class {
   getPartStyles(){
     return { 'width': 100/this.partnumber+'%'};
   }
+
   getPartNumber(){
     let array = new Array(this.partnumber);
     for(let a = 0; a<array.length; a++){
@@ -60,6 +61,11 @@ let timelineViewController = class {
     if(this.project._activeElement !== null){
       this.project._activeElement.addKeyframe(new this.Keyframe(this.project._pot));
     }
+  }
+
+  /* removes the active Element */
+  removeElement(element) {
+    this.project.removeElement(element);
   }
   
 

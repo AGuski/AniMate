@@ -133,5 +133,12 @@
     height: 100%;
   }
 
-  
+  #removeElement {
+    float: left;
+    font-size: 14px;
+
+    &:hover {
+      color: red;
+    }
+  }
 }
