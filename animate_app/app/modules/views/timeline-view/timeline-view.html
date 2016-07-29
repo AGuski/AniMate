@@ -3,6 +3,7 @@
     <ul class="timeline-controls-items">
       <li ng-click="ctrl.play()" ><i class="fa button fa-play"></i></li>
       <li ng-click="ctrl.addKeyframe()"><i class="fa button fa-plus"></i></li>
+      <!-- <li ng-click="ctrl.removeKeyframe()"><i class="fa button fa-close"></i></li> -->
       <li ng-click="ctrl.repeat()"><i class="fa button fa-repeat" ng-style="ctrl.activeLoop"></i></li>
     </ul>
     
@@ -22,6 +23,7 @@
       <div class="elementList">
         <ul>
           <li ng-repeat="el in ctrl.elements" class="element" ng-class="ctrl.isActiveElement(el);" ng-click="ctrl.setActiveElement(el);">
+            <i ng-click="ctrl.removeElement(el)" id="removeElement" class="fa button fa-close"></i>
             {{el.getTitel()}}
           </li>
         </ul>
@@ -36,5 +38,4 @@
     </div>
     <div id="play-marker"></div>
   </div>
-  
 </div>

@@ -13,6 +13,17 @@ export function projectClassService(){
       this._activeElement = element;
     }
 
+    removeElement(element) {
+      var index = this._elements.indexOf(element);
+      if (index !== -1) {
+        this._elements.splice(index, 1);
+      }
+      if (this._activeElement === element) {
+        this._activeElement = undefined;
+      }
+      
+    }
+
     setActiveElement(el) {
       this._activeElement = el;
     }
