@@ -6,6 +6,7 @@ let TimelineController = class {
     this.project = projectFactory.getProject();
     this.projectLength = projectFactory.getProjectLength();
     this.selectedKeyframe = null;
+    this.$scope = $scope;
 
     // Drag EventListener
     $element.on('mousedown', (event) => {
@@ -19,8 +20,10 @@ let TimelineController = class {
             }
         });
         $document.on('mouseup', () => {
+          this.setProjectPot(this.selectedKeyframe);
           $document.off('mousemove', this.mousemove);
           $document.off('mouseup', this.mouseup);
+          this.$scope.$apply();
         });
       }
     });
@@ -31,8 +34,12 @@ let TimelineController = class {
     return {'left': 'calc('+positionLeft+' - 7px)'};
   }
   selectKeyframe(keyframe){
-    this.project._pot = keyframe._pot;
+    this.setProjectPot(keyframe);
     this.selectedKeyframe = keyframe;
+  }
+
+  setProjectPot(keyframe) {
+    this.project._pot = keyframe._pot;
   }
 }
 
