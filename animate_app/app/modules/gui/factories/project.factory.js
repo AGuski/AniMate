@@ -5,6 +5,7 @@ export function projectFactory(Element, Project){
 
   return {
     addElement,
+    removeElement,
     getElements,
     getProject,
     getProjectLength,
@@ -13,6 +14,9 @@ export function projectFactory(Element, Project){
   };
   function addElement(el) {
     project.addElement(new Element(el, "Element_"+project._elements.length));
+  }
+  function removeElement(el) {
+    project.removeElement(el);
   }
   function getElements() {
     return project._elements;
