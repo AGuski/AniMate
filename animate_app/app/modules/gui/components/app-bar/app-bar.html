@@ -1,0 +1,17 @@
+<h1 ui-sref="about" class="brand-text"></h1>
+<ul class="app-bar-items">
+    <li><img id="logo_image"  ui-sref="about" src="../../../../assets/logo.png" /></li>
+  <li ng-click="ctrl.toggleSettings()"><i class="fa button fa-cog"></i>Settings</li>
+  <li ng-click="ctrl.toggleFileExport()"><i class="fa button fa-file-text"></i>File Export</li>
+  <!-- <li><i class="fa button fa-pencil-square"></i></li> -->
+</ul>
+
+<ul class="app-bar-items right">
+  <li ng-click="ctrl.rotateStates(['main.default', 'main.swapped'])"><i class="fa button fa-arrows-h"></i>Swap Sections</li>
+<!--   <li>
+    <i
+      class="fa button " ng-click="ctrl.toggleChildState('.file')"
+      ng-class="{'fa-file-text': !ctrl.hasState('.file'), 'fa-pencil-square': ctrl.hasState('.file')}">
+    </i>
+  </li> -->
+</ul>

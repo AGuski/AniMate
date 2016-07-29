@@ -1,0 +1,6 @@
+<div id="modal-backdrop" ng-click="$ctrl.close()"></div>
+<div id="modal">
+	<h2 class="title">{{$ctrl.title}}</h2>
+	<ng-transclude class="content"></ng-transclude>
+	<i class="modal-close-btn fa button fa-times-circle" ng-click="$ctrl.close()"></i>
+</div>

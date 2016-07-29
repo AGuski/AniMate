@@ -1,0 +1,29 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "extends": "angular",
+  "extends": "eslint:recommended",
+  "globals": {
+    "chrome": true,
+    "angular": true,
+    "domJSON": true
+  },
+  "rules": {
+    //enable ESLint rules, such as
+    "eqeqeq": 1,
+    "no-console": 1,
+    "no-unused-vars": 1
+    //"space-before-blocks": 1
+  },
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "ecmaFeatures": {
+        "modules": true,
+        "spread" : true,
+        "restParams" : true
+  }
+}

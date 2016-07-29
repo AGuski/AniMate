@@ -1,0 +1,15 @@
+<table>
+  <tr ng-repeat="property in ctrl.content">
+    <td>
+      <div class="keyframe-indicator-frame">
+        <div class="previous fa fa-chevron-left" ng-click="ctrl.previous(property.name)"></div>
+        <div class="keyframe-indicator" ng-click="ctrl.activation(property.name)"></div>
+        <div class="next fa fa-chevron-right" ng-click="ctrl.next(property.name)"></div>
+      </div>
+    </td>
+    <td>{{property.name}} :</td>
+    <td>
+      <input type="{{property.type}}" name="{{property.name}}" ng-model="property.value" ng-change="ctrl.changeValue(property.name, property.value)">
+    </td>
+  </tr>
+</table>

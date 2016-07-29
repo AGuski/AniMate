@@ -1,0 +1,27 @@
+<div id="web-view">
+
+
+  <div id="controls">
+
+    <button id="back" title="Go Back" ng-click="ctrl.backTo()">&#9664;</button>
+    <button id="forward" title="Go Forward" ng-click="ctrl.forward()">&#9654;</button>
+    <button id="home" title="Go Home"  ng-click="ctrl.getHome()">&#8962;</button>
+    <button id="reload" title="Reload" ng-click="ctrl.refresh()">&#10227;</button>
+
+    <form id="location-form" name="ctrl.webViewForm">
+      <div id="center-column">
+        <input id="location" type="text" 
+          form="webViewForm" 
+          ng-model-options="{ updateOn: 'change blur' }" 
+          ng-value="ctrl.url"  
+          ng-model="ctrl.url"
+          format-URL>
+      </div>
+      <input type="submit" value="Go" >
+    </form>
+  </div>
+
+  <webview
+          src="{{ctrl.url}}"
+          autosize="off"></webview>
+</div>

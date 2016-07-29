@@ -1,0 +1,20 @@
+<div id="property-view">
+
+  <!-- Demo form to Inject a script into an-webview -->
+<!--   <form id="inject-form" name="ctrl.injectForm">
+    <textarea form="inject-form" cols="30" rows="10" ng-model="ctrl.injectScript"></textarea>
+    <button id="injectButton" ng-click="ctrl.injectAScript(ctrl.injectScript)">Inject script!!</button>
+  </form> -->
+
+  <!-- Property List -->
+  <div class="scroll-container">
+  	<div class="header">
+      <h4>{{ctrl.getElementTitle()}}</h4>
+      tagName: {{ctrl.getTagName()}}<br>
+      classes: {{ctrl.getClass()}}<br>
+      id: {{ctrl.getId()}}
+    </div>
+    <collapse-container ng-repeat="category in ctrl.data.categories" category="category"></collapse-container>
+  </div>
+
+</div>

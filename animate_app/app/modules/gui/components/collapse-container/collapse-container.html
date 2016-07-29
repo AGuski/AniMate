@@ -1,0 +1,15 @@
+<div class="header">
+  <div ng-click="ctrl.toggle()" class="collapse-handler fa fa-chevron-down">
+  </div>
+  <div ng-click="ctrl.toggle()" class="headline">{{ctrl.category.name}}</div>
+  <!-- <div class="keyframeIndicatorFrame">
+    <div class="previous fa fa-chevron-left"></div>
+    <div class="keyframeIndicator"></div>
+    <div class="next fa fa-chevron-right"></div>
+  </div> -->
+</div>
+<div class="content {{ctrl.visibility}}" >
+  <properties-container content="ctrl.category.content"></properties-container>
+  <collapse-container ng-repeat="category in ctrl.category.subcategories" category="category">
+  </collapse-container>
+</div>

@@ -1,0 +1,27 @@
+{
+  "name": "animate",
+  "description": "A chrome app to comfortably use and create animations with GreenSock.",
+  "main": "index.html",
+  "authors": [
+    "Alexander Guski <alex@weareomega.net>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "chrome-app-livereload": "bestander/chrome-app-livereload#^0.0.5",
+    "angular": "^1.5.5",
+    "font-awesome": "^4.6.2",
+    "angular-ui-router": "^0.3.0",
+    "normalize-css": "^4.1.1",
+    "angular-animate": "^1.5.6",
+    "angular-sanitize": "^1.5.6"
+  }
+}
