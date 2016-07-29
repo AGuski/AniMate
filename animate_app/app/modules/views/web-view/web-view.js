@@ -96,8 +96,6 @@ let webViewController = class {
 
     this.scope.$on('addScript', (event, name, script) =>{
 
-
-
       this.webview.addContentScripts([
         {
           name: name,
@@ -106,6 +104,8 @@ let webViewController = class {
           run_at: 'document_end' // <--- Maybe make this argument too...
         }
       ]);
+
+      this.refresh();
     });
 
     this.scope.$on('removeScripts', (events, scriptArray) => {
