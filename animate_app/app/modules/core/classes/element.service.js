@@ -30,6 +30,8 @@ export function elementClassService(Keyframe, Timeline) {
     convertElementForGeneration(loop) {
       const o = this._object;
       const tag = o.tagName.toLowerCase();
+      o.className = o.className || '';
+      o.id = o.id || '';
       let idSelector = '';
       if (o.id) {
         idSelector = '#' + o.id;
